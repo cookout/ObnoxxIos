@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-#import "OBAppDelegate.h"
+#import "OBNAppDelegate.h"
 
 int main(int argc, char * argv[])
 {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([OBAppDelegate class]));
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([OBNAppDelegate class]));
     }
 }

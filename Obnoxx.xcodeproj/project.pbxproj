@@ -12,13 +12,30 @@
 		20020480198976AA00A8C732 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2002047F198976AA00A8C732 /* UIKit.framework */; };
 		20020486198976AA00A8C732 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 20020484198976AA00A8C732 /* InfoPlist.strings */; };
 		20020488198976AA00A8C732 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 20020487198976AA00A8C732 /* main.m */; };
-		2002048C198976AA00A8C732 /* OBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2002048B198976AA00A8C732 /* OBAppDelegate.m */; };
+		2002048C198976AA00A8C732 /* OBNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2002048B198976AA00A8C732 /* OBNAppDelegate.m */; };
 		2002048E198976AA00A8C732 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2002048D198976AA00A8C732 /* Images.xcassets */; };
 		20020495198976AA00A8C732 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20020494198976AA00A8C732 /* XCTest.framework */; };
 		20020496198976AA00A8C732 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2002047B198976AA00A8C732 /* Foundation.framework */; };
 		20020497198976AA00A8C732 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2002047F198976AA00A8C732 /* UIKit.framework */; };
 		2002049F198976AA00A8C732 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2002049D198976AA00A8C732 /* InfoPlist.strings */; };
 		200204A1198976AA00A8C732 /* ObnoxxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 200204A0198976AA00A8C732 /* ObnoxxTests.m */; };
+		200204B219897A6700A8C732 /* OBNLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 200204B019897A6700A8C732 /* OBNLoginViewController.m */; };
+		200204B319897A6700A8C732 /* OBNLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 200204B119897A6700A8C732 /* OBNLoginViewController.xib */; };
+		200204C019897CE000A8C732 /* OBNHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 200204BF19897CE000A8C732 /* OBNHomeViewController.m */; };
+		2002050819897DF900A8C732 /* OBNRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2002050619897DF900A8C732 /* OBNRecordViewController.m */; };
+		2002050919897DF900A8C732 /* OBNRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2002050719897DF900A8C732 /* OBNRecordViewController.xib */; };
+		2002050D19897E1A00A8C732 /* OBNMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2002050B19897E1A00A8C732 /* OBNMessageViewController.m */; };
+		2002050E19897E1A00A8C732 /* OBNMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2002050C19897E1A00A8C732 /* OBNMessageViewController.xib */; };
+		20020511198992F000A8C732 /* OBNServerCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 20020510198992F000A8C732 /* OBNServerCommunicator.m */; };
+		20020526198995CC00A8C732 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20020514198995CC00A8C732 /* AFHTTPRequestOperation.m */; };
+		20020527198995CC00A8C732 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20020516198995CC00A8C732 /* AFHTTPRequestOperationManager.m */; };
+		20020528198995CC00A8C732 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20020518198995CC00A8C732 /* AFHTTPSessionManager.m */; };
+		20020529198995CC00A8C732 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2002051B198995CC00A8C732 /* AFNetworkReachabilityManager.m */; };
+		2002052A198995CC00A8C732 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2002051D198995CC00A8C732 /* AFSecurityPolicy.m */; };
+		2002052B198995CC00A8C732 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2002051F198995CC00A8C732 /* AFURLConnectionOperation.m */; };
+		2002052C198995CC00A8C732 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 20020521198995CC00A8C732 /* AFURLRequestSerialization.m */; };
+		2002052D198995CC00A8C732 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 20020523198995CC00A8C732 /* AFURLResponseSerialization.m */; };
+		2002052E198995CC00A8C732 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20020525198995CC00A8C732 /* AFURLSessionManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,14 +57,46 @@
 		20020485198976AA00A8C732 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		20020487198976AA00A8C732 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		20020489198976AA00A8C732 /* Obnoxx-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Obnoxx-Prefix.pch"; sourceTree = "<group>"; };
-		2002048A198976AA00A8C732 /* OBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBAppDelegate.h; sourceTree = "<group>"; };
-		2002048B198976AA00A8C732 /* OBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBAppDelegate.m; sourceTree = "<group>"; };
+		2002048A198976AA00A8C732 /* OBNAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OBNAppDelegate.h; sourceTree = "<group>"; };
+		2002048B198976AA00A8C732 /* OBNAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OBNAppDelegate.m; sourceTree = "<group>"; };
 		2002048D198976AA00A8C732 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		20020493198976AA00A8C732 /* ObnoxxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObnoxxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20020494198976AA00A8C732 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		2002049C198976AA00A8C732 /* ObnoxxTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ObnoxxTests-Info.plist"; sourceTree = "<group>"; };
 		2002049E198976AA00A8C732 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		200204A0198976AA00A8C732 /* ObnoxxTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObnoxxTests.m; sourceTree = "<group>"; };
+		200204AF19897A6700A8C732 /* OBNLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBNLoginViewController.h; sourceTree = "<group>"; };
+		200204B019897A6700A8C732 /* OBNLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBNLoginViewController.m; sourceTree = "<group>"; };
+		200204B119897A6700A8C732 /* OBNLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OBNLoginViewController.xib; sourceTree = "<group>"; };
+		200204BE19897CE000A8C732 /* OBNHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBNHomeViewController.h; sourceTree = "<group>"; };
+		200204BF19897CE000A8C732 /* OBNHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBNHomeViewController.m; sourceTree = "<group>"; };
+		2002050519897DF900A8C732 /* OBNRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBNRecordViewController.h; sourceTree = "<group>"; };
+		2002050619897DF900A8C732 /* OBNRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBNRecordViewController.m; sourceTree = "<group>"; };
+		2002050719897DF900A8C732 /* OBNRecordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OBNRecordViewController.xib; sourceTree = "<group>"; };
+		2002050A19897E1A00A8C732 /* OBNMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBNMessageViewController.h; sourceTree = "<group>"; };
+		2002050B19897E1A00A8C732 /* OBNMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBNMessageViewController.m; sourceTree = "<group>"; };
+		2002050C19897E1A00A8C732 /* OBNMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OBNMessageViewController.xib; sourceTree = "<group>"; };
+		2002050F198992F000A8C732 /* OBNServerCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBNServerCommunicator.h; sourceTree = "<group>"; };
+		20020510198992F000A8C732 /* OBNServerCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBNServerCommunicator.m; sourceTree = "<group>"; };
+		20020513198995CC00A8C732 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		20020514198995CC00A8C732 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		20020515198995CC00A8C732 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
+		20020516198995CC00A8C732 /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
+		20020517198995CC00A8C732 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		20020518198995CC00A8C732 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		20020519198995CC00A8C732 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		2002051A198995CC00A8C732 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		2002051B198995CC00A8C732 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		2002051C198995CC00A8C732 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
+		2002051D198995CC00A8C732 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
+		2002051E198995CC00A8C732 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		2002051F198995CC00A8C732 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		20020520198995CC00A8C732 /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		20020521198995CC00A8C732 /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		20020522198995CC00A8C732 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		20020523198995CC00A8C732 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		20020524198995CC00A8C732 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
+		20020525198995CC00A8C732 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +126,7 @@
 		2002046F198976AA00A8C732 = {
 			isa = PBXGroup;
 			children = (
+				20020512198995CC00A8C732 /* AFNetworking */,
 				20020481198976AA00A8C732 /* Obnoxx */,
 				2002049A198976AA00A8C732 /* ObnoxxTests */,
 				2002047A198976AA00A8C732 /* Frameworks */,
@@ -107,8 +157,21 @@
 		20020481198976AA00A8C732 /* Obnoxx */ = {
 			isa = PBXGroup;
 			children = (
-				2002048A198976AA00A8C732 /* OBAppDelegate.h */,
-				2002048B198976AA00A8C732 /* OBAppDelegate.m */,
+				2002050F198992F000A8C732 /* OBNServerCommunicator.h */,
+				20020510198992F000A8C732 /* OBNServerCommunicator.m */,
+				2002050A19897E1A00A8C732 /* OBNMessageViewController.h */,
+				2002050B19897E1A00A8C732 /* OBNMessageViewController.m */,
+				2002050C19897E1A00A8C732 /* OBNMessageViewController.xib */,
+				2002050519897DF900A8C732 /* OBNRecordViewController.h */,
+				2002050619897DF900A8C732 /* OBNRecordViewController.m */,
+				2002050719897DF900A8C732 /* OBNRecordViewController.xib */,
+				2002048A198976AA00A8C732 /* OBNAppDelegate.h */,
+				2002048B198976AA00A8C732 /* OBNAppDelegate.m */,
+				200204AF19897A6700A8C732 /* OBNLoginViewController.h */,
+				200204B019897A6700A8C732 /* OBNLoginViewController.m */,
+				200204B119897A6700A8C732 /* OBNLoginViewController.xib */,
+				200204BE19897CE000A8C732 /* OBNHomeViewController.h */,
+				200204BF19897CE000A8C732 /* OBNHomeViewController.m */,
 				2002048D198976AA00A8C732 /* Images.xcassets */,
 				20020482198976AA00A8C732 /* Supporting Files */,
 			);
@@ -142,6 +205,32 @@
 				2002049D198976AA00A8C732 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		20020512198995CC00A8C732 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				20020513198995CC00A8C732 /* AFHTTPRequestOperation.h */,
+				20020514198995CC00A8C732 /* AFHTTPRequestOperation.m */,
+				20020515198995CC00A8C732 /* AFHTTPRequestOperationManager.h */,
+				20020516198995CC00A8C732 /* AFHTTPRequestOperationManager.m */,
+				20020517198995CC00A8C732 /* AFHTTPSessionManager.h */,
+				20020518198995CC00A8C732 /* AFHTTPSessionManager.m */,
+				20020519198995CC00A8C732 /* AFNetworking.h */,
+				2002051A198995CC00A8C732 /* AFNetworkReachabilityManager.h */,
+				2002051B198995CC00A8C732 /* AFNetworkReachabilityManager.m */,
+				2002051C198995CC00A8C732 /* AFSecurityPolicy.h */,
+				2002051D198995CC00A8C732 /* AFSecurityPolicy.m */,
+				2002051E198995CC00A8C732 /* AFURLConnectionOperation.h */,
+				2002051F198995CC00A8C732 /* AFURLConnectionOperation.m */,
+				20020520198995CC00A8C732 /* AFURLRequestSerialization.h */,
+				20020521198995CC00A8C732 /* AFURLRequestSerialization.m */,
+				20020522198995CC00A8C732 /* AFURLResponseSerialization.h */,
+				20020523198995CC00A8C732 /* AFURLResponseSerialization.m */,
+				20020524198995CC00A8C732 /* AFURLSessionManager.h */,
+				20020525198995CC00A8C732 /* AFURLSessionManager.m */,
+			);
+			path = AFNetworking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +311,9 @@
 			files = (
 				20020486198976AA00A8C732 /* InfoPlist.strings in Resources */,
 				2002048E198976AA00A8C732 /* Images.xcassets in Resources */,
+				2002050E19897E1A00A8C732 /* OBNMessageViewController.xib in Resources */,
+				2002050919897DF900A8C732 /* OBNRecordViewController.xib in Resources */,
+				200204B319897A6700A8C732 /* OBNLoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,8 +332,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2002052B198995CC00A8C732 /* AFURLConnectionOperation.m in Sources */,
 				20020488198976AA00A8C732 /* main.m in Sources */,
-				2002048C198976AA00A8C732 /* OBAppDelegate.m in Sources */,
+				2002048C198976AA00A8C732 /* OBNAppDelegate.m in Sources */,
+				200204C019897CE000A8C732 /* OBNHomeViewController.m in Sources */,
+				2002052D198995CC00A8C732 /* AFURLResponseSerialization.m in Sources */,
+				2002050D19897E1A00A8C732 /* OBNMessageViewController.m in Sources */,
+				2002052C198995CC00A8C732 /* AFURLRequestSerialization.m in Sources */,
+				2002052A198995CC00A8C732 /* AFSecurityPolicy.m in Sources */,
+				20020526198995CC00A8C732 /* AFHTTPRequestOperation.m in Sources */,
+				2002052E198995CC00A8C732 /* AFURLSessionManager.m in Sources */,
+				2002050819897DF900A8C732 /* OBNRecordViewController.m in Sources */,
+				20020511198992F000A8C732 /* OBNServerCommunicator.m in Sources */,
+				20020528198995CC00A8C732 /* AFHTTPSessionManager.m in Sources */,
+				200204B219897A6700A8C732 /* OBNLoginViewController.m in Sources */,
+				20020529198995CC00A8C732 /* AFNetworkReachabilityManager.m in Sources */,
+				20020527198995CC00A8C732 /* AFHTTPRequestOperationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

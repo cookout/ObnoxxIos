@@ -6,15 +6,20 @@
 //  Copyright (c) 2014 Obnoxx. All rights reserved.
 //
 
-#import "OBAppDelegate.h"
+#import "OBNAppDelegate.h"
+#import "OBNHomeViewController.h"
 
-@implementation OBAppDelegate
+@implementation OBNAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    OBNHomeViewController *hvc = [[OBNHomeViewController alloc] init];
+    self.window.rootViewController = hvc;
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
