@@ -19,13 +19,7 @@
 		20020497198976AA00A8C732 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2002047F198976AA00A8C732 /* UIKit.framework */; };
 		2002049F198976AA00A8C732 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2002049D198976AA00A8C732 /* InfoPlist.strings */; };
 		200204A1198976AA00A8C732 /* ObnoxxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 200204A0198976AA00A8C732 /* ObnoxxTests.m */; };
-		200204B219897A6700A8C732 /* OBNLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 200204B019897A6700A8C732 /* OBNLoginViewController.m */; };
-		200204B319897A6700A8C732 /* OBNLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 200204B119897A6700A8C732 /* OBNLoginViewController.xib */; };
 		200204C019897CE000A8C732 /* OBNHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 200204BF19897CE000A8C732 /* OBNHomeViewController.m */; };
-		2002050819897DF900A8C732 /* OBNRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2002050619897DF900A8C732 /* OBNRecordViewController.m */; };
-		2002050919897DF900A8C732 /* OBNRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2002050719897DF900A8C732 /* OBNRecordViewController.xib */; };
-		2002050D19897E1A00A8C732 /* OBNMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2002050B19897E1A00A8C732 /* OBNMessageViewController.m */; };
-		2002050E19897E1A00A8C732 /* OBNMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2002050C19897E1A00A8C732 /* OBNMessageViewController.xib */; };
 		20020511198992F000A8C732 /* OBNServerCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 20020510198992F000A8C732 /* OBNServerCommunicator.m */; };
 		20020526198995CC00A8C732 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20020514198995CC00A8C732 /* AFHTTPRequestOperation.m */; };
 		20020527198995CC00A8C732 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20020516198995CC00A8C732 /* AFHTTPRequestOperationManager.m */; };
@@ -42,6 +36,12 @@
 		200205951989BCBA00A8C732 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200205941989BCBA00A8C732 /* AudioToolbox.framework */; };
 		200205971989BCC200A8C732 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200205961989BCC200A8C732 /* Accelerate.framework */; };
 		200205A01989BE1F00A8C732 /* libTheAmazingAudioEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2002059D1989BE0700A8C732 /* libTheAmazingAudioEngine.a */; };
+		20949D16198A27FB00AA2AF3 /* OBNRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20949D14198A27FB00AA2AF3 /* OBNRecordViewController.m */; };
+		20949D17198A27FB00AA2AF3 /* OBNRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20949D15198A27FB00AA2AF3 /* OBNRecordViewController.xib */; };
+		20949D1B198A293F00AA2AF3 /* OBNLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20949D19198A293F00AA2AF3 /* OBNLoginViewController.m */; };
+		20949D1C198A293F00AA2AF3 /* OBNLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20949D1A198A293F00AA2AF3 /* OBNLoginViewController.xib */; };
+		20949D20198A298C00AA2AF3 /* OBNMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20949D1E198A298C00AA2AF3 /* OBNMessageViewController.m */; };
+		20949D21198A298C00AA2AF3 /* OBNMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20949D1F198A298C00AA2AF3 /* OBNMessageViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,17 +85,8 @@
 		2002049C198976AA00A8C732 /* ObnoxxTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ObnoxxTests-Info.plist"; sourceTree = "<group>"; };
 		2002049E198976AA00A8C732 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		200204A0198976AA00A8C732 /* ObnoxxTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObnoxxTests.m; sourceTree = "<group>"; };
-		200204AF19897A6700A8C732 /* OBNLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBNLoginViewController.h; sourceTree = "<group>"; };
-		200204B019897A6700A8C732 /* OBNLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBNLoginViewController.m; sourceTree = "<group>"; };
-		200204B119897A6700A8C732 /* OBNLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OBNLoginViewController.xib; sourceTree = "<group>"; };
 		200204BE19897CE000A8C732 /* OBNHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBNHomeViewController.h; sourceTree = "<group>"; };
 		200204BF19897CE000A8C732 /* OBNHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBNHomeViewController.m; sourceTree = "<group>"; };
-		2002050519897DF900A8C732 /* OBNRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBNRecordViewController.h; sourceTree = "<group>"; };
-		2002050619897DF900A8C732 /* OBNRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBNRecordViewController.m; sourceTree = "<group>"; };
-		2002050719897DF900A8C732 /* OBNRecordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OBNRecordViewController.xib; sourceTree = "<group>"; };
-		2002050A19897E1A00A8C732 /* OBNMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBNMessageViewController.h; sourceTree = "<group>"; };
-		2002050B19897E1A00A8C732 /* OBNMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBNMessageViewController.m; sourceTree = "<group>"; };
-		2002050C19897E1A00A8C732 /* OBNMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OBNMessageViewController.xib; sourceTree = "<group>"; };
 		2002050F198992F000A8C732 /* OBNServerCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBNServerCommunicator.h; sourceTree = "<group>"; };
 		20020510198992F000A8C732 /* OBNServerCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBNServerCommunicator.m; sourceTree = "<group>"; };
 		20020513198995CC00A8C732 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -126,6 +117,15 @@
 		200205941989BCBA00A8C732 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		200205961989BCC200A8C732 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		200205981989BE0700A8C732 /* TheAmazingAudioEngine.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TheAmazingAudioEngine.xcodeproj; path = AmazingAudioEngine/TheAmazingAudioEngine.xcodeproj; sourceTree = "<group>"; };
+		20949D13198A27FB00AA2AF3 /* OBNRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBNRecordViewController.h; sourceTree = "<group>"; };
+		20949D14198A27FB00AA2AF3 /* OBNRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBNRecordViewController.m; sourceTree = "<group>"; };
+		20949D15198A27FB00AA2AF3 /* OBNRecordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OBNRecordViewController.xib; sourceTree = "<group>"; };
+		20949D18198A293F00AA2AF3 /* OBNLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBNLoginViewController.h; sourceTree = "<group>"; };
+		20949D19198A293F00AA2AF3 /* OBNLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBNLoginViewController.m; sourceTree = "<group>"; };
+		20949D1A198A293F00AA2AF3 /* OBNLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OBNLoginViewController.xib; sourceTree = "<group>"; };
+		20949D1D198A298C00AA2AF3 /* OBNMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OBNMessageViewController.h; path = ../OBNMessageViewController.h; sourceTree = "<group>"; };
+		20949D1E198A298C00AA2AF3 /* OBNMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OBNMessageViewController.m; path = ../OBNMessageViewController.m; sourceTree = "<group>"; };
+		20949D1F198A298C00AA2AF3 /* OBNMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OBNMessageViewController.xib; path = ../OBNMessageViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,17 +275,17 @@
 		200205331989A59000A8C732 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2002050A19897E1A00A8C732 /* OBNMessageViewController.h */,
-				2002050B19897E1A00A8C732 /* OBNMessageViewController.m */,
-				2002050C19897E1A00A8C732 /* OBNMessageViewController.xib */,
-				2002050519897DF900A8C732 /* OBNRecordViewController.h */,
-				2002050619897DF900A8C732 /* OBNRecordViewController.m */,
-				2002050719897DF900A8C732 /* OBNRecordViewController.xib */,
-				200204AF19897A6700A8C732 /* OBNLoginViewController.h */,
-				200204B019897A6700A8C732 /* OBNLoginViewController.m */,
-				200204B119897A6700A8C732 /* OBNLoginViewController.xib */,
+				20949D1D198A298C00AA2AF3 /* OBNMessageViewController.h */,
+				20949D1E198A298C00AA2AF3 /* OBNMessageViewController.m */,
+				20949D1F198A298C00AA2AF3 /* OBNMessageViewController.xib */,
+				20949D18198A293F00AA2AF3 /* OBNLoginViewController.h */,
+				20949D19198A293F00AA2AF3 /* OBNLoginViewController.m */,
+				20949D1A198A293F00AA2AF3 /* OBNLoginViewController.xib */,
 				200204BE19897CE000A8C732 /* OBNHomeViewController.h */,
 				200204BF19897CE000A8C732 /* OBNHomeViewController.m */,
+				20949D13198A27FB00AA2AF3 /* OBNRecordViewController.h */,
+				20949D14198A27FB00AA2AF3 /* OBNRecordViewController.m */,
+				20949D15198A27FB00AA2AF3 /* OBNRecordViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -391,11 +391,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20949D17198A27FB00AA2AF3 /* OBNRecordViewController.xib in Resources */,
+				20949D21198A298C00AA2AF3 /* OBNMessageViewController.xib in Resources */,
 				20020486198976AA00A8C732 /* InfoPlist.strings in Resources */,
+				20949D1C198A293F00AA2AF3 /* OBNLoginViewController.xib in Resources */,
 				2002048E198976AA00A8C732 /* Images.xcassets in Resources */,
-				2002050E19897E1A00A8C732 /* OBNMessageViewController.xib in Resources */,
-				2002050919897DF900A8C732 /* OBNRecordViewController.xib in Resources */,
-				200204B319897A6700A8C732 /* OBNLoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,22 +415,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				2002052B198995CC00A8C732 /* AFURLConnectionOperation.m in Sources */,
+				20949D20198A298C00AA2AF3 /* OBNMessageViewController.m in Sources */,
 				20020488198976AA00A8C732 /* main.m in Sources */,
 				2002048C198976AA00A8C732 /* OBNAppDelegate.m in Sources */,
 				200204C019897CE000A8C732 /* OBNHomeViewController.m in Sources */,
 				2002052D198995CC00A8C732 /* AFURLResponseSerialization.m in Sources */,
 				200205311989A56D00A8C732 /* OBNSound.m in Sources */,
-				2002050D19897E1A00A8C732 /* OBNMessageViewController.m in Sources */,
 				2002052C198995CC00A8C732 /* AFURLRequestSerialization.m in Sources */,
 				2002052A198995CC00A8C732 /* AFSecurityPolicy.m in Sources */,
 				20020526198995CC00A8C732 /* AFHTTPRequestOperation.m in Sources */,
 				2002052E198995CC00A8C732 /* AFURLSessionManager.m in Sources */,
-				2002050819897DF900A8C732 /* OBNRecordViewController.m in Sources */,
 				200205391989AFC700A8C732 /* OBNJSONResponseSerializer.m in Sources */,
+				20949D1B198A293F00AA2AF3 /* OBNLoginViewController.m in Sources */,
 				200205361989A5B400A8C732 /* OBNUser.m in Sources */,
+				20949D16198A27FB00AA2AF3 /* OBNRecordViewController.m in Sources */,
 				20020511198992F000A8C732 /* OBNServerCommunicator.m in Sources */,
 				20020528198995CC00A8C732 /* AFHTTPSessionManager.m in Sources */,
-				200204B219897A6700A8C732 /* OBNLoginViewController.m in Sources */,
 				20020529198995CC00A8C732 /* AFNetworkReachabilityManager.m in Sources */,
 				20020527198995CC00A8C732 /* AFHTTPRequestOperationManager.m in Sources */,
 			);
@@ -560,6 +560,7 @@
 					"$(inherited)",
 					AmazingAudioEngine/TheAmazingAudioEngine,
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					AmazingAudioEngine/Modules,
 				);
 				INFOPLIST_FILE = "Obnoxx/Obnoxx-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -578,6 +579,7 @@
 					"$(inherited)",
 					AmazingAudioEngine/TheAmazingAudioEngine,
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					AmazingAudioEngine/Modules,
 				);
 				INFOPLIST_FILE = "Obnoxx/Obnoxx-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -644,6 +646,7 @@
 				200204A6198976AA00A8C732 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		200204A7198976AA00A8C732 /* Build configuration list for PBXNativeTarget "ObnoxxTests" */ = {
 			isa = XCConfigurationList;
@@ -652,6 +655,7 @@
 				200204A9198976AA00A8C732 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		200205A11989F80400A8C732 /* AERecorder.h in Sources */ = {isa = PBXBuildFile; fileRef = 4C38DC501545840E009F4454 /* AERecorder.h */; };
+		200205A21989F80400A8C732 /* AERecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C38DC511545840E009F4454 /* AERecorder.m */; };
+		200205A31989F84800A8C732 /* AEMixerBuffer.h in Sources */ = {isa = PBXBuildFile; fileRef = 4C8A0F3D1540BBD300307CB6 /* AEMixerBuffer.h */; };
+		200205A41989F84800A8C732 /* AEMixerBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8A0F3E1540BBD300307CB6 /* AEMixerBuffer.m */; };
 		4C09450116FBD7460054608E /* AEBlockScheduler.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C0944FF16FBD7460054608E /* AEBlockScheduler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4C09450216FBD7460054608E /* AEBlockScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C09450016FBD7460054608E /* AEBlockScheduler.m */; };
 		4C215CEF1523A7D500D36CAD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C215CEE1523A7D500D36CAD /* Foundation.framework */; };
@@ -319,6 +323,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				200205A31989F84800A8C732 /* AEMixerBuffer.h in Sources */,
+				200205A41989F84800A8C732 /* AEMixerBuffer.m in Sources */,
+				200205A11989F80400A8C732 /* AERecorder.h in Sources */,
+				200205A21989F80400A8C732 /* AERecorder.m in Sources */,
 				4C215D081523A8E500D36CAD /* AEAudioController.m in Sources */,
 				4C215D091523A8E500D36CAD /* AEAudioFilePlayer.m in Sources */,
 				4C215D0A1523A8E500D36CAD /* AEUtilities.c in Sources */,
