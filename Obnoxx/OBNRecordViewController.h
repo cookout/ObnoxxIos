@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
+#import "AEAudioController.h"
 
 @interface OBNRecordViewController : UIViewController
 

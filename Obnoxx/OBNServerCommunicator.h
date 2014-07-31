@@ -9,6 +9,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
+#import "OBNSound.h"
 
 @interface OBNServerCommunicator : NSObject
 @property (nonatomic, strong) NSMutableArray *loginListeners;

@@ -1,14 +1,13 @@
 //
-//  OBHomeViewController.h
+//  OBNUser.m
 //  Obnoxx
 //
 //  Created by Chandrashekar Raghavan on 7/30/14.
 //  Copyright (c) 2014 Obnoxx. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "OBNUser.h"
 
-
-@interface OBNHomeViewController : UITabBarController
+@implementation OBNUser
 
 @end
