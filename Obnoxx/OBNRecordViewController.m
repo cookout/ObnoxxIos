@@ -37,23 +37,45 @@
 {
     if(self.recording.localUrl)
     {
-        NSURL *file = [[NSBundle mainBundle] URLForResource:self.recording.localUrl withExtension:@"m4a"];
+        NSURL *file = [NSURL fileURLWithPath:self.recording.localUrl];
         AEAudioFilePlayer *player = [AEAudioFilePlayer audioFilePlayerWithURL:file
                                   audioController:_audioController
                                             error:NULL];
-        NSLog(@"File URL %@",self.recording.localUrl);
+        AEAudioUnitFilter *reverb = [[AEAudioUnitFilter alloc]
+            initWithComponentDescription:AEAudioComponentDescriptionMake(kAudioUnitManufacturer_Apple,
+                                                                         kAudioUnitType_Effect,
+                                                                         kAudioUnitSubType_Reverb2)
+            audioController:_audioController
+            error:NULL];
+        
+        if ( reverb ) {
+            // Assign a parameter value
+            AudioUnitSetParameter(reverb.audioUnit,
+                                  kAudioUnitScope_Global,
+                                  0,
+                                  kReverb2Param_DryWetMix,
+                                  100.f,
+                                  0);
+            
+            // Begin filtering
+            [_audioController addFilter:reverb];
+        }
+        
+        
         [_audioController addChannels:[NSArray arrayWithObjects:player,nil]];
     }
 }
 
 -(IBAction) record:(id) sender
 {
+    self.audioRecorder = [[AERecorder alloc] initWithAudioController:_audioController];
+    self.recording = [[OBNSound alloc]init];
     NSString *documentsFolder = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)
                                  objectAtIndex:0];
     
     NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0];
     NSString *caldate = [now description];
-    NSString *fileName = [[NSString alloc] initWithFormat:@"recording-%@",caldate];
+    NSString *fileName = [[NSString alloc] initWithFormat:@"recording-%@.m4a",caldate];
     NSString *filePath = [documentsFolder stringByAppendingPathComponent:fileName];
     self.recording.localUrl = filePath;
     
@@ -100,9 +122,6 @@
         if ( !result ) {
             // The audio controller did not initialize correctly
         }
-        
-        self.audioRecorder = [[AERecorder alloc] initWithAudioController:_audioController];
-        self.recording = [[OBNSound alloc]init];
     }
     return self;
 }
