@@ -7,7 +7,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OBNRecordViewController">
             <connections>
                 <outlet property="play" destination="weX-NU-Gh9" id="9TE-bq-2GZ"/>
+                <outlet property="receiver" destination="z4G-Lo-V7g" id="Ckq-RB-4gt"/>
                 <outlet property="record" destination="rYI-FO-esa" id="MPi-eE-n1n"/>
+                <outlet property="send" destination="doj-MT-NhX" id="TpW-dx-5TY"/>
                 <outlet property="stop" destination="UAI-Ki-lgQ" id="gAC-Ek-6NU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -45,6 +47,22 @@
                     </state>
                     <connections>
                         <action selector="stop:" destination="-1" eventType="touchUpInside" id="uBo-c9-dcd"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z4G-Lo-V7g">
+                    <rect key="frame" x="53" y="43" width="214" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="doj-MT-NhX">
+                    <rect key="frame" x="142" y="81" width="36" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Send">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="send:" destination="-1" eventType="touchUpInside" id="dQB-kt-JQ4"/>
                     </connections>
                 </button>
             </subviews>

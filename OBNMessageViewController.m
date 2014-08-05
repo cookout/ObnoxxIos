@@ -20,6 +20,7 @@
     if (self) {
         // Custom initialization
         self.title = @"Noxxes";
+        //self.restorationIdentifier = @"OBNMessageViewController";
     }
     return self;
 }

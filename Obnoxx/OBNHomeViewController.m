@@ -30,6 +30,7 @@
     
         NSArray *coreViews = [[NSArray alloc] initWithObjects:recorder,messages,nil];
         self.viewControllers = coreViews;
+        //self.restorationIdentifier = @"OBNHomeViewController";
     }
     return self;
 }

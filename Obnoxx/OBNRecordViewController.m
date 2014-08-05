@@ -15,11 +15,14 @@
 //
 
 #import "OBNRecordViewController.h"
+#import "OBNServerCommunicator.h"
 
 @interface OBNRecordViewController ()
 @property (nonatomic, strong) IBOutlet UIButton *play;
 @property (nonatomic, strong) IBOutlet UIButton *stop;
 @property (nonatomic, strong) IBOutlet UIButton *record;
+@property (nonatomic, strong) IBOutlet UIButton *send;
+@property (nonatomic, strong) IBOutlet UITextField *receiver;
 
 @property (nonatomic, strong) AEAudioController *audioController;
 @property (nonatomic, strong) AERecorder *audioRecorder;
@@ -27,6 +30,7 @@
 -(IBAction) play:(id) sender;
 -(IBAction) record:(id) sender;
 -(IBAction) stop:(id) sender;
+-(IBAction) send:(id) sender;
 
 @end
 
@@ -63,6 +67,24 @@
         
         
         [_audioController addChannels:[NSArray arrayWithObjects:player,nil]];
+    }
+}
+
+-(IBAction) send:(id) sender
+{
+    OBNServerCommunicator *server = [OBNServerCommunicator sharedInstance];
+    [server addObserver:self forKeyPath:@"uploadResponse" options:NSKeyValueChangeNewKey context:@"sndS"];
+    [server sendSound:self.recording.localUrl fileName:[self.recording.localUrl lastPathComponent]
+       recipientPhone:self.receiver.text];
+}
+
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(NSObject *)response change:(NSString *)change context:(id) context
+{
+    
+    if([context isEqualToString:@"sndS"])
+    {
+        // Do something! The server responded to our send sound attempt
     }
 }
 
@@ -111,6 +133,7 @@
     if (self) {
         // Custom initialization
         self.title = @"Record";
+        //self.restorationIdentifier = @"OBNRecordViewController";
         
         // The Amazing Audio Engine-based audio controller
         self.audioController = [[AEAudioController alloc]

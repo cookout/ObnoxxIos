@@ -8,6 +8,10 @@
 
 #import "OBNAppDelegate.h"
 #import "OBNHomeViewController.h"
+#import "OBNLoginViewController.h"
+#import "OBNState.h"
+#import "OBNServerCommunicator.h"
+
 
 @implementation OBNAppDelegate
 
@@ -16,9 +20,11 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    OBNLoginViewController *lvc = [[OBNLoginViewController alloc] init];
+    self.window.rootViewController = lvc;
     
-    OBNHomeViewController *hvc = [[OBNHomeViewController alloc] init];
-    self.window.rootViewController = hvc;
+    // Initialize saved state if available
+    [OBNState sharedInstance];
     
     [self.window makeKeyAndVisible];
     return YES;
@@ -49,6 +55,11 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    dispatch_async(dispatch_get_main_queue(), ^{[[OBNServerCommunicator sharedInstance] registerToken:deviceToken];});
 }
 
 @end

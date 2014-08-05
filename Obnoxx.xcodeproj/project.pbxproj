@@ -42,6 +42,9 @@
 		20949D1C198A293F00AA2AF3 /* OBNLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20949D1A198A293F00AA2AF3 /* OBNLoginViewController.xib */; };
 		20949D20198A298C00AA2AF3 /* OBNMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20949D1E198A298C00AA2AF3 /* OBNMessageViewController.m */; };
 		20949D21198A298C00AA2AF3 /* OBNMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20949D1F198A298C00AA2AF3 /* OBNMessageViewController.xib */; };
+		20949D25198B0ABD00AA2AF3 /* OBNSMSVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20949D23198B0ABD00AA2AF3 /* OBNSMSVerificationViewController.m */; };
+		20949D26198B0ABD00AA2AF3 /* OBNSMSVerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20949D24198B0ABD00AA2AF3 /* OBNSMSVerificationViewController.xib */; };
+		20949D29198B0E9400AA2AF3 /* OBNState.m in Sources */ = {isa = PBXBuildFile; fileRef = 20949D28198B0E9400AA2AF3 /* OBNState.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +129,11 @@
 		20949D1D198A298C00AA2AF3 /* OBNMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OBNMessageViewController.h; path = ../OBNMessageViewController.h; sourceTree = "<group>"; };
 		20949D1E198A298C00AA2AF3 /* OBNMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OBNMessageViewController.m; path = ../OBNMessageViewController.m; sourceTree = "<group>"; };
 		20949D1F198A298C00AA2AF3 /* OBNMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OBNMessageViewController.xib; path = ../OBNMessageViewController.xib; sourceTree = "<group>"; };
+		20949D22198B0ABD00AA2AF3 /* OBNSMSVerificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBNSMSVerificationViewController.h; sourceTree = "<group>"; };
+		20949D23198B0ABD00AA2AF3 /* OBNSMSVerificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBNSMSVerificationViewController.m; sourceTree = "<group>"; };
+		20949D24198B0ABD00AA2AF3 /* OBNSMSVerificationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OBNSMSVerificationViewController.xib; sourceTree = "<group>"; };
+		20949D27198B0E9400AA2AF3 /* OBNState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBNState.h; sourceTree = "<group>"; };
+		20949D28198B0E9400AA2AF3 /* OBNState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBNState.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +272,8 @@
 		200205321989A57700A8C732 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
+				20949D27198B0E9400AA2AF3 /* OBNState.h */,
+				20949D28198B0E9400AA2AF3 /* OBNState.m */,
 				2002052F1989A56D00A8C732 /* OBNSound.h */,
 				200205301989A56D00A8C732 /* OBNSound.m */,
 				200205341989A5B400A8C732 /* OBNUser.h */,
@@ -281,6 +291,9 @@
 				20949D18198A293F00AA2AF3 /* OBNLoginViewController.h */,
 				20949D19198A293F00AA2AF3 /* OBNLoginViewController.m */,
 				20949D1A198A293F00AA2AF3 /* OBNLoginViewController.xib */,
+				20949D22198B0ABD00AA2AF3 /* OBNSMSVerificationViewController.h */,
+				20949D23198B0ABD00AA2AF3 /* OBNSMSVerificationViewController.m */,
+				20949D24198B0ABD00AA2AF3 /* OBNSMSVerificationViewController.xib */,
 				200204BE19897CE000A8C732 /* OBNHomeViewController.h */,
 				200204BF19897CE000A8C732 /* OBNHomeViewController.m */,
 				20949D13198A27FB00AA2AF3 /* OBNRecordViewController.h */,
@@ -396,6 +409,7 @@
 				20020486198976AA00A8C732 /* InfoPlist.strings in Resources */,
 				20949D1C198A293F00AA2AF3 /* OBNLoginViewController.xib in Resources */,
 				2002048E198976AA00A8C732 /* Images.xcassets in Resources */,
+				20949D26198B0ABD00AA2AF3 /* OBNSMSVerificationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,9 +438,11 @@
 				2002052C198995CC00A8C732 /* AFURLRequestSerialization.m in Sources */,
 				2002052A198995CC00A8C732 /* AFSecurityPolicy.m in Sources */,
 				20020526198995CC00A8C732 /* AFHTTPRequestOperation.m in Sources */,
+				20949D29198B0E9400AA2AF3 /* OBNState.m in Sources */,
 				2002052E198995CC00A8C732 /* AFURLSessionManager.m in Sources */,
 				200205391989AFC700A8C732 /* OBNJSONResponseSerializer.m in Sources */,
 				20949D1B198A293F00AA2AF3 /* OBNLoginViewController.m in Sources */,
+				20949D25198B0ABD00AA2AF3 /* OBNSMSVerificationViewController.m in Sources */,
 				200205361989A5B400A8C732 /* OBNUser.m in Sources */,
 				20949D16198A27FB00AA2AF3 /* OBNRecordViewController.m in Sources */,
 				20020511198992F000A8C732 /* OBNServerCommunicator.m in Sources */,
