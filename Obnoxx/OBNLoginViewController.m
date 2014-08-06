@@ -124,9 +124,14 @@
 {
     // Check if login is even required - if a sessionId is available, load the app
     OBNState *appState = [OBNState sharedInstance];
+    OBNServerCommunicator *server = [OBNServerCommunicator sharedInstance];
     if(appState.sessionId)
     {
         OBNHomeViewController *hvc = [[OBNHomeViewController alloc]init];
+        if(appState.deviceToken)
+        {
+            dispatch_async(dispatch_get_main_queue(),^{[server registerToken];});
+        }
         [self presentViewController:hvc animated:NO completion: ^{}];
     }
 }

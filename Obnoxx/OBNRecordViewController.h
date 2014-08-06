@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AEAudioController.h"
-#import "AERecorder.h"
-#import "AEAudioFilePlayer.h"
 #import "OBNSound.h"
+#import "OBNAudioManager.h"
 
 
 @interface OBNRecordViewController : UIViewController

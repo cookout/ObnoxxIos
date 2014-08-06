@@ -21,5 +21,6 @@
 -(void) verifyPhoneNumber:(NSString *) phoneNumber;
 -(void) verifyCode: (NSString *) verificationCode;
 -(void) sendSound:(NSString *)filePath fileName:(NSString *)fileName recipientPhone:(NSString *) recipientPhone;
--(void) registerToken:(NSData *) token;
+-(void) registerToken;
+-(void) getSoundDelivery:(NSString *)deliveryId;
 @end

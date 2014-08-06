@@ -45,6 +45,7 @@
 		20949D25198B0ABD00AA2AF3 /* OBNSMSVerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20949D23198B0ABD00AA2AF3 /* OBNSMSVerificationViewController.m */; };
 		20949D26198B0ABD00AA2AF3 /* OBNSMSVerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20949D24198B0ABD00AA2AF3 /* OBNSMSVerificationViewController.xib */; };
 		20949D29198B0E9400AA2AF3 /* OBNState.m in Sources */ = {isa = PBXBuildFile; fileRef = 20949D28198B0E9400AA2AF3 /* OBNState.m */; };
+		20C48F6C1991B07C008D17D5 /* OBNAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C48F6B1991B07C008D17D5 /* OBNAudioManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +135,8 @@
 		20949D24198B0ABD00AA2AF3 /* OBNSMSVerificationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OBNSMSVerificationViewController.xib; sourceTree = "<group>"; };
 		20949D27198B0E9400AA2AF3 /* OBNState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBNState.h; sourceTree = "<group>"; };
 		20949D28198B0E9400AA2AF3 /* OBNState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBNState.m; sourceTree = "<group>"; };
+		20C48F6A1991B07C008D17D5 /* OBNAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBNAudioManager.h; sourceTree = "<group>"; };
+		20C48F6B1991B07C008D17D5 /* OBNAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBNAudioManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +203,8 @@
 		20020481198976AA00A8C732 /* Obnoxx */ = {
 			isa = PBXGroup;
 			children = (
+				20C48F6A1991B07C008D17D5 /* OBNAudioManager.h */,
+				20C48F6B1991B07C008D17D5 /* OBNAudioManager.m */,
 				2002048A198976AA00A8C732 /* OBNAppDelegate.h */,
 				2002048B198976AA00A8C732 /* OBNAppDelegate.m */,
 				2002050F198992F000A8C732 /* OBNServerCommunicator.h */,
@@ -444,6 +449,7 @@
 				20949D1B198A293F00AA2AF3 /* OBNLoginViewController.m in Sources */,
 				20949D25198B0ABD00AA2AF3 /* OBNSMSVerificationViewController.m in Sources */,
 				200205361989A5B400A8C732 /* OBNUser.m in Sources */,
+				20C48F6C1991B07C008D17D5 /* OBNAudioManager.m in Sources */,
 				20949D16198A27FB00AA2AF3 /* OBNRecordViewController.m in Sources */,
 				20020511198992F000A8C732 /* OBNServerCommunicator.m in Sources */,
 				20020528198995CC00A8C732 /* AFHTTPSessionManager.m in Sources */,
@@ -580,6 +586,7 @@
 				);
 				INFOPLIST_FILE = "Obnoxx/Obnoxx-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "96455062-CB25-4A78-AF25-FC10E0C81510";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -599,6 +606,7 @@
 				);
 				INFOPLIST_FILE = "Obnoxx/Obnoxx-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "96455062-CB25-4A78-AF25-FC10E0C81510";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

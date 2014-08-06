@@ -25,8 +25,12 @@
     
     // Initialize saved state if available
     [OBNState sharedInstance];
-    
     [self.window makeKeyAndVisible];
+    
+    // Register for notifications
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+     (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    
     return YES;
 }
 
@@ -59,7 +63,30 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    dispatch_async(dispatch_get_main_queue(), ^{[[OBNServerCommunicator sharedInstance] registerToken:deviceToken];});
+    // Since the app may not have yet received a cookout session, save the device token to
+    // the application state and send the register token request later
+    
+    OBNState *appState=[OBNState sharedInstance];
+    appState.deviceToken = deviceToken;
+    appState.isRegistered = [NSNumber numberWithBool:YES];
+    dispatch_async(dispatch_get_main_queue(),^{[appState saveToDisk];});
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    // Push notification request failed. Let's see what happened
+    NSLog(@"%@", error);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler
+{
+    NSLog(@"%@",userInfo);
+    OBNServerCommunicator *server = [OBNServerCommunicator sharedInstance];
+    // Do something upon receiving a remote notification
+    NSDictionary *aps = [[userInfo valueForKey:@"aps"] valueForKey:@"alert"];
+    
+    // Async get & play the sound delivery
+    dispatch_async(dispatch_get_main_queue(),^{[server getSoundDelivery:[aps valueForKey:@"soundDeliveryId"]];});
 }
 
 @end

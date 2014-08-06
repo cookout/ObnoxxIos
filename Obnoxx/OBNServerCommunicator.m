@@ -9,6 +9,7 @@
 #import "OBNServerCommunicator.h"
 #import "OBNJSONResponseSerializer.h"
 #import "OBNState.h"
+#import "OBNAudioManager.h"
 
 @implementation OBNServerCommunicator
 
@@ -90,28 +91,72 @@
          }];
 }
 
--(void) registerToken:(NSData *) token
+-(void) registerToken
 {
     OBNState *appState = [OBNState sharedInstance];
-    NSDictionary *parameters = @{@"sessionId":appState.sessionId};
+    NSData *token = appState.deviceToken;
+    
+    // Convert the token to Hex so that the server understands it
+    const unsigned char *dataBuffer = (const unsigned char *)[token bytes];
+    NSUInteger          dataLength  = [token length];
+    NSMutableString     *hexString  = [NSMutableString stringWithCapacity:(dataLength * 2)];
+    
+    for (int i = 0; i < dataLength; ++i)
+        [hexString appendString:[NSString stringWithFormat:@"%02lx", (unsigned long)dataBuffer[i]]];
+    
+    NSDictionary *parameters = @{@"sessionId":appState.sessionId,
+                                 @"registrationId":hexString,
+                                 @"type":@"ios"};
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [[OBNJSONResponseSerializer alloc] init];
+    
+    [manager POST:@"http://obnoxx.co/addDeviceRegistrationId" parameters:parameters
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             // Sucessfully sent sound to intended recipient, handle it here
+             NSLog(@"Registered successfully %@",responseObject);
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             // Sound send failed, handle it here
+             NSLog(@"Register failed %@",operation.responseObject);
+            
+         }];
+    
+}
+
+-(void) getSoundDelivery:(NSString *)deliveryId
+{
+    OBNState *appState = [OBNState sharedInstance];
+    NSDictionary *parameters = @{@"sessionId":appState.sessionId,
+                                 @"soundDeliveryId":deliveryId};
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [[OBNJSONResponseSerializer alloc] init];
     
-    [manager POST:@"http://obnoxx.co/addDeviceRegistrationId" parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        [formData appendPartWithFileData:token name:@"registrationId" fileName:@"token" mimeType:@"application/octet-stream"];
-    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        // Sucessfully sent sound to intended recipient, handle it here
-        NSLog(@"Registration success %@", responseObject);
-    }
-    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        // Sound send failed, handle it here
-        NSLog(@"Registration failed %@", operation);
-    
-    }];
+    [manager GET:@"http://obnoxx.co/getSoundDelivery" parameters:parameters
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              // Sucessfully sent sound to intended recipient, handle it here
+              NSLog(@"Get sound delivery successfully %@",responseObject);
+              OBNAudioManager *audioManager = [OBNAudioManager sharedInstance];
+              
+              dispatch_async(dispatch_get_main_queue(), ^ {
+                  NSURL  *url = [NSURL URLWithString:[[responseObject valueForKey:@"sound"] valueForKey:@"soundFileUrl"]];
+                  NSData *urlData = [NSData dataWithContentsOfURL:url];
+                  NSString  *filePath;
+                  if ( urlData )
+                  {
+                      NSArray       *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+                      NSString  *documentsDirectory = [paths objectAtIndex:0];
+                  
+                      filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"sound.m4a"];
+                      [urlData writeToFile:filePath atomically:YES];
+                  }
+                  [audioManager play:filePath];
+              });
+          }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              // Sound send failed, handle it here
+              NSLog(@"Get sound delivery failed %@",operation);
+          }];
 }
-
-
-
 
 @end

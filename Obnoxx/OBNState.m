@@ -11,6 +11,9 @@
 #define kTemporaryTokenKey @"Temporary Token"
 #define kSessionId @"Session"
 #define kCurrentUser @"Current User"
+#define kDeviceToken @"Device Token"
+#define kRegistrationStatus @"Device Registeration Status"
+
 #define kSavePath [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0]stringByAppendingPathComponent:@"Private"]
 #define kFileName @"obnoxx.1"
 
@@ -49,6 +52,9 @@
                     sharedInstance.temporaryToken = [decoder decodeObjectForKey:kTemporaryTokenKey];
                     sharedInstance.sessionId = [decoder decodeObjectForKey:kSessionId];
                     sharedInstance.currentUser = [decoder decodeObjectForKey:kCurrentUser];
+                    sharedInstance.deviceToken = [decoder decodeObjectForKey:kDeviceToken];
+                    sharedInstance.isRegistered = [decoder decodeObjectForKey:kRegistrationStatus];
+                    
                     [decoder finishDecoding];
                 }
             }
@@ -75,6 +81,8 @@
         [encoder encodeObject:self.temporaryToken  forKey:kTemporaryTokenKey];
         [encoder encodeObject:self.sessionId forKey:kSessionId];
         [encoder encodeObject:self.currentUser  forKey:kCurrentUser];
+        [encoder encodeObject:self.deviceToken forKey:kDeviceToken];
+        [encoder encodeObject:self.isRegistered forKey:kRegistrationStatus];
         
         [encoder finishEncoding];
         return [data writeToFile:filePath atomically:YES];
@@ -88,6 +96,8 @@
         _temporaryToken = nil;
         _sessionId = nil;
         _currentUser = nil;
+        _deviceToken = nil;
+        _isRegistered = [NSNumber numberWithBool:NO];
     }
     return self;
 }

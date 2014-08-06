@@ -13,6 +13,9 @@
 @property (nonatomic, strong) NSString *temporaryToken;
 @property (nonatomic, strong) NSString *sessionId;
 @property (nonatomic, retain) OBNUser *currentUser;
+@property (nonatomic, retain) NSData *deviceToken;
+@property (nonatomic, retain) NSNumber *isRegistered;
+
 +(instancetype) sharedInstance;
 -(BOOL) saveToDisk;
 @end
