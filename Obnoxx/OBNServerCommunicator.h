@@ -15,6 +15,7 @@
 @property (nonatomic, retain) NSObject *verifyResponse;
 @property (nonatomic, retain) NSObject *uploadResponse;
 @property (nonatomic, retain) NSObject *loginResponse;
+@property (nonatomic, retain) NSObject *soundsResponse;
 
 +(instancetype) sharedInstance;
 -(void) phoneVerifyListener:(id) listener;
@@ -23,4 +24,5 @@
 -(void) sendSound:(NSString *)filePath fileName:(NSString *)fileName recipientPhone:(NSString *) recipientPhone;
 -(void) registerToken;
 -(void) getSoundDelivery:(NSString *)deliveryId;
+-(void) getSounds;
 @end

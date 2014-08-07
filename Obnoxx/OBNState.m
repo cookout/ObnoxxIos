@@ -13,6 +13,9 @@
 #define kCurrentUser @"Current User"
 #define kDeviceToken @"Device Token"
 #define kRegistrationStatus @"Device Registeration Status"
+#define kDeliveries @"Sound deliveries"
+#define kUsers @"Users"
+#define kSounds @"Sounds"
 
 #define kSavePath [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0]stringByAppendingPathComponent:@"Private"]
 #define kFileName @"obnoxx.1"
@@ -54,6 +57,9 @@
                     sharedInstance.currentUser = [decoder decodeObjectForKey:kCurrentUser];
                     sharedInstance.deviceToken = [decoder decodeObjectForKey:kDeviceToken];
                     sharedInstance.isRegistered = [decoder decodeObjectForKey:kRegistrationStatus];
+                    sharedInstance.deliveries = [decoder decodeObjectForKey:kDeliveries];
+                    sharedInstance.sounds = [decoder decodeObjectForKey:kSounds];
+                    sharedInstance.users = [decoder decodeObjectForKey:kUsers];
                     
                     [decoder finishDecoding];
                 }
@@ -83,6 +89,9 @@
         [encoder encodeObject:self.currentUser  forKey:kCurrentUser];
         [encoder encodeObject:self.deviceToken forKey:kDeviceToken];
         [encoder encodeObject:self.isRegistered forKey:kRegistrationStatus];
+        [encoder encodeObject:self.deliveries forKey:kDeliveries];
+        [encoder encodeObject:self.sounds forKey:kSounds];
+        [encoder encodeObject:self.users forKey:kUsers];
         
         [encoder finishEncoding];
         return [data writeToFile:filePath atomically:YES];

@@ -15,6 +15,9 @@
 @property (nonatomic, retain) OBNUser *currentUser;
 @property (nonatomic, retain) NSData *deviceToken;
 @property (nonatomic, retain) NSNumber *isRegistered;
+@property (nonatomic, retain) NSMutableArray *deliveries;
+@property (nonatomic, retain) NSMutableArray *sounds;
+@property (nonatomic, retain) NSMutableArray *users;
 
 +(instancetype) sharedInstance;
 -(BOOL) saveToDisk;

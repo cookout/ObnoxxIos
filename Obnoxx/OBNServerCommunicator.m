@@ -159,4 +159,25 @@
           }];
 }
 
+-(void) getSounds
+{
+    OBNState *appState = [OBNState sharedInstance];
+    NSDictionary *parameters = @{@"sessionId":appState.sessionId};
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [[OBNJSONResponseSerializer alloc] init];
+    
+    [manager GET:@"http://obnoxx.co/getSounds" parameters:parameters
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             // Sucessfully sent sound to intended recipient, handle it here
+             NSLog(@"Get all sounds succeeded %@",responseObject);
+             self.soundsResponse = responseObject;
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             // Sound send failed, handle it here
+             NSLog(@"Get all sounds failed %@",operation);
+             self.soundsResponse = operation.responseObject;
+         }];
+}
+
 @end

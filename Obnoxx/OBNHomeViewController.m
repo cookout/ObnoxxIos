@@ -27,7 +27,8 @@
         // for this tab bar controller
         OBNRecordViewController *recorder = [[OBNRecordViewController alloc]init];
         OBNMessageViewController *messages = [[OBNMessageViewController alloc] init];
-    
+        messages.title = @"Noxxes";
+        
         NSArray *coreViews = [[NSArray alloc] initWithObjects:recorder,messages,nil];
         self.viewControllers = coreViews;
         //self.restorationIdentifier = @"OBNHomeViewController";
