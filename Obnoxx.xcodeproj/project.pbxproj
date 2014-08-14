@@ -46,6 +46,7 @@
 		20C48F6C1991B07C008D17D5 /* OBNAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C48F6B1991B07C008D17D5 /* OBNAudioManager.m */; };
 		20C48F701992C723008D17D5 /* OBNMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C48F6E1992C723008D17D5 /* OBNMessageViewController.m */; };
 		20C48F711992C723008D17D5 /* OBNMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20C48F6F1992C723008D17D5 /* OBNMessageViewController.xib */; };
+		20C48F75199598EA008D17D5 /* OBNDelivery.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C48F74199598EA008D17D5 /* OBNDelivery.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +138,8 @@
 		20C48F6D1992C723008D17D5 /* OBNMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OBNMessageViewController.h; path = ../OBNMessageViewController.h; sourceTree = "<group>"; };
 		20C48F6E1992C723008D17D5 /* OBNMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OBNMessageViewController.m; path = ../OBNMessageViewController.m; sourceTree = "<group>"; };
 		20C48F6F1992C723008D17D5 /* OBNMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OBNMessageViewController.xib; path = ../OBNMessageViewController.xib; sourceTree = "<group>"; };
+		20C48F73199598EA008D17D5 /* OBNDelivery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBNDelivery.h; sourceTree = "<group>"; };
+		20C48F74199598EA008D17D5 /* OBNDelivery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBNDelivery.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +280,8 @@
 		200205321989A57700A8C732 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
+				20C48F73199598EA008D17D5 /* OBNDelivery.h */,
+				20C48F74199598EA008D17D5 /* OBNDelivery.m */,
 				20949D27198B0E9400AA2AF3 /* OBNState.h */,
 				20949D28198B0E9400AA2AF3 /* OBNState.m */,
 				2002052F1989A56D00A8C732 /* OBNSound.h */,
@@ -440,6 +445,7 @@
 				2002052D198995CC00A8C732 /* AFURLResponseSerialization.m in Sources */,
 				200205311989A56D00A8C732 /* OBNSound.m in Sources */,
 				2002052C198995CC00A8C732 /* AFURLRequestSerialization.m in Sources */,
+				20C48F75199598EA008D17D5 /* OBNDelivery.m in Sources */,
 				2002052A198995CC00A8C732 /* AFSecurityPolicy.m in Sources */,
 				20020526198995CC00A8C732 /* AFHTTPRequestOperation.m in Sources */,
 				20949D29198B0E9400AA2AF3 /* OBNState.m in Sources */,

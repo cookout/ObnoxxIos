@@ -14,4 +14,7 @@
 @property (nonatomic, retain) NSString *userId;
 @property (nonatomic, retain) NSString *soundFileUrl;
 @property (nonatomic, retain) NSString *localUrl;
+-(instancetype) initWithDictionary: (NSDictionary *) sound;
 @end
+
+

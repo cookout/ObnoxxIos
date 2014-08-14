@@ -38,13 +38,24 @@
     return self;
 }
 
--(void) play: (NSString *) fileURL
+-(void) play: (NSString *) filePath
 {
-    NSURL *file = [NSURL fileURLWithPath:fileURL];
+    NSRange fileName = [filePath rangeOfString:[filePath lastPathComponent]];
+    NSRange path = NSMakeRange(0, filePath.length-fileName.length);
+    NSMutableString *newName = [[NSMutableString alloc] initWithString:[filePath substringWithRange:path]];
+    [newName appendString:@"proc.m4a"];
+
+    NSURL *file = [NSURL fileURLWithPath:filePath];
     self.audioPlayer = [AEAudioFilePlayer audioFilePlayerWithURL:file
-                                                              audioController:_audioController
-                                                                        error:NULL];
-    AEAudioUnitFilter *reverb = [[AEAudioUnitFilter alloc]
+                                            audioController:_audioController
+                                             error:NULL];
+    self.audioPlayer.completionBlock = ^{
+        [self.audioRecorder finishRecording];
+        [self.audioController removeOutputReceiver:self.audioRecorder];
+        self.audioRecorder = nil;
+    };
+    
+    /*AEAudioUnitFilter *reverb = [[AEAudioUnitFilter alloc]
                                      initWithComponentDescription:
                                  AEAudioComponentDescriptionMake(kAudioUnitManufacturer_Apple,
                                                                  kAudioUnitType_Effect,kAudioUnitSubType_Reverb2)
@@ -61,8 +72,63 @@
             
         // Begin filtering
         [_audioController addFilter:reverb];
-    }
+    }*/
     [_audioController addChannels:[NSArray arrayWithObjects:self.audioPlayer,nil]];
+
+ }
+
+
+-(void) addFilter: (OBFilter) filter  path:(NSString *) filePath
+{
+    switch(filter)
+    {
+        case kHelium:
+        {
+            AudioComponentDescription helium = AEAudioComponentDescriptionMake(kAudioUnitManufacturer_Apple, kAudioUnitType_FormatConverter, kAudioUnitSubType_NewTimePitch);
+            
+            AEAudioUnitFilter *heliumUnit = [[AEAudioUnitFilter alloc] initWithComponentDescription:helium
+                                                                                    audioController:_audioController error:nil];
+            
+            if(!heliumUnit) NSLog(@"Trouble creating helium unit");
+            AudioUnitSetParameter(heliumUnit.audioUnit, kNewTimePitchParam_Pitch,
+                                  kAudioUnitScope_Global,0,
+                                  -700.f, 0);
+            [_audioController addFilter:heliumUnit];
+            
+            NSRange fileName = [filePath rangeOfString:[filePath lastPathComponent]];
+            NSRange path = NSMakeRange(0, filePath.length-fileName.length);
+            NSMutableString *newName = [[NSMutableString alloc] initWithString:[filePath substringWithRange:path]];
+            [newName appendString:@"proc.m4a"];
+            
+            self.audioRecorder = [[AERecorder alloc] initWithAudioController:_audioController];
+            [self.audioRecorder beginRecordingToFileAtPath:newName fileType:kAudioFileM4AType error:nil];
+            [_audioController addOutputReceiver:self.audioRecorder];
+            
+            [self play:filePath];
+            break;
+        }
+        case kReverb:
+        {
+            break;
+        }
+        case kAutoTune:
+        {
+            break;
+        }
+        case kSuperBass:
+        {
+            break;
+        }
+        default:
+        {
+            
+        }
+    }
+}
+
+-(void) addEffect: (OBEffect) effect
+{
+    
 }
 
 -(OBNSound *) record: (NSString *)filePath
@@ -86,14 +152,12 @@
     }
     
     [_audioController addInputReceiver:self.audioRecorder];
-    [_audioController addOutputReceiver:self.audioRecorder];
     return recording;
 }
 
 -(void) stop
 {
     [self.audioController removeInputReceiver:self.audioRecorder];
-    [self.audioController removeOutputReceiver:self.audioRecorder];
     [self.audioRecorder finishRecording];
     self.audioRecorder = nil;
 }

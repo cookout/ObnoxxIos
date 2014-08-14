@@ -9,5 +9,17 @@
 #import "OBNSound.h"
 
 @implementation OBNSound
+-(instancetype) initWithDictionary: (NSDictionary *) sound
+{
+    self = [super init];
+    
+    if(self) {
+        _id = [sound valueForKey:@"id"];
+        _userId = [sound valueForKey:@"userId"];
+        _soundFileUrl = [sound valueForKey:@"soundFileUrl"];
+        _localUrl = nil;
+    }
+    return self;
+}
 
 @end

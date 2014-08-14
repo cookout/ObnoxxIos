@@ -16,6 +16,9 @@
 
 #import "OBNRecordViewController.h"
 #import "OBNServerCommunicator.h"
+#import "OBNState.h"
+#import "OBNSound.h"
+#import "OBNDelivery.h"
 
 @interface OBNRecordViewController ()
 @property (nonatomic, strong) IBOutlet UIButton *play;
@@ -29,6 +32,10 @@
 -(IBAction) record:(id) sender;
 -(IBAction) stop:(id) sender;
 -(IBAction) send:(id) sender;
+
+-(IBAction) applyFilter1:(id) sender;
+-(IBAction) applyFilter2:(id) sender;
+-(IBAction) applyFilter3:(id) sender;
 
 @end
 
@@ -44,18 +51,68 @@
 -(IBAction) send:(id) sender
 {
     OBNServerCommunicator *server = [OBNServerCommunicator sharedInstance];
+    OBNAudioManager *audioManager = [OBNAudioManager sharedInstance];
+
     [server addObserver:self forKeyPath:@"uploadResponse" options:NSKeyValueChangeNewKey context:@"sndS"];
-    [server sendSound:self.recording.localUrl fileName:[self.recording.localUrl lastPathComponent]
-       recipientPhone:self.receiver.text];
+//    [server sendSound:self.recording.localUrl fileName:[self.recording.localUrl lastPathComponent]
+//       recipientPhone:self.receiver.text];
+    
+    NSRange fileName = [self.recording.localUrl rangeOfString:[self.recording.localUrl lastPathComponent]];
+    NSRange path = NSMakeRange(0, self.recording.localUrl.length-fileName.length);
+    NSMutableString *newName = [[NSMutableString alloc] initWithString:[self.recording.localUrl substringWithRange:path]];
+    [newName appendString:@"proc.m4a"];
+    
+    [server sendSound:newName fileName:@"proc.m4a" recipientPhone:self.receiver.text];
 }
 
+
+-(IBAction) applyFilter1:(id)sender
+{
+    [[OBNAudioManager sharedInstance] addFilter:kHelium path:self.recording.localUrl];
+}
+
+-(IBAction) applyFilter2:(id)sender
+{
+    
+}
+
+-(IBAction) applyFilter3:(id)sender
+{
+    
+}
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(NSObject *)response change:(NSString *)change context:(id) context
 {
     
     if([context isEqualToString:@"sndS"])
     {
-        // Do something! The server responded to our send sound attempt
+        NSDictionary *uploadResponse = ((OBNServerCommunicator *)response).uploadResponse;
+        
+        // Rename the local sound file
+        /*NSRange fileName = [self.recording.localUrl rangeOfString:[self.recording.localUrl lastPathComponent]];
+        NSRange path = NSMakeRange(0, self.recording.localUrl.length-fileName.length);
+        NSMutableString *newName = [[NSMutableString alloc] initWithString:[self.recording.localUrl substringWithRange:path]];
+        [newName appendFormat:@"%@.m4a",[[uploadResponse valueForKey:@"sound"] valueForKey:@"id"]];
+        [[NSFileManager defaultManager] moveItemAtPath:self.recording.localUrl toPath:newName error:nil];
+        
+        // Add the saved sound details to the local state data structure
+        OBNSound *savedSound = [[OBNSound alloc] initWithDictionary:[uploadResponse valueForKey:@"sound"]];
+        savedSound.localUrl = newName;
+        OBNState *appState = [OBNState sharedInstance];
+        [appState.sounds addObject:savedSound];
+        
+        // Add the sound delivery to the delivery data structure
+        OBNDelivery *delivery = [[OBNDelivery alloc] initWithDictionary:[uploadResponse valueForKey:@"soundDeliveries"][0]];
+        [appState.deliveries addObject:delivery];
+        
+        // Save app state
+        [appState saveToDisk];
+        
+        // Display a message that confirming that the sound was posted
+        UIAlertView * newAlert = [[UIAlertView alloc]init];
+        newAlert.message = @"Sound sent!";
+        [newAlert addButtonWithTitle:@"Ok"];
+        [newAlert show];*/
     }
 }
 
