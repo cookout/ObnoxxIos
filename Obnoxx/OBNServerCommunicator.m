@@ -150,7 +150,7 @@
                       filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"sound.m4a"];
                       [urlData writeToFile:filePath atomically:YES];
                   }
-                  [audioManager play:filePath];
+                  [audioManager playNotification:filePath];
               });
           }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {

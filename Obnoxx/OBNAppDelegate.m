@@ -29,8 +29,7 @@
     
     // Register for notifications
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-     (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-    
+     (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];    
     return YES;
 }
 
@@ -80,13 +79,16 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler
 {
+    
+    // TODO: HANDLE CASE WHERE NOTIFICATION ARRIVES BEFORE USER IS SETUP
+    
     NSLog(@"%@",userInfo);
     OBNServerCommunicator *server = [OBNServerCommunicator sharedInstance];
     // Do something upon receiving a remote notification
     NSDictionary *aps = [[userInfo valueForKey:@"aps"] valueForKey:@"alert"];
     
     // Async get & play the sound delivery
-    dispatch_async(dispatch_get_main_queue(),^{[server getSoundDelivery:[aps valueForKey:@"soundDeliveryId"]];});
+   [server getSoundDelivery:[aps valueForKey:@"soundDeliveryId"]];
 }
 
 @end

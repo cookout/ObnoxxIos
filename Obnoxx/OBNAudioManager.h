@@ -11,13 +11,14 @@
 #import "AERecorder.h"
 #import "AEAudioFilePlayer.h"
 #import "OBNSound.h"
+#import "OBNAutoTuneFilter.h"
 
 typedef enum {
-    kReverb,
-    kAutoTune,
-    kBasic,
-    kHelium,
-    kSuperBass
+    kCuji,
+    kKaraka,
+    kPopHero,
+    kTippy,
+    kEqo
 } OBFilter;
 
 typedef enum {
@@ -28,13 +29,15 @@ typedef enum {
 
 @interface OBNAudioManager : NSObject
 @property (nonatomic, strong) AEAudioController *audioController;
+@property (nonatomic, strong) AEAudioController *notificationController;
 @property (nonatomic, strong) AERecorder *audioRecorder;
 @property (nonatomic, strong) AEAudioFilePlayer *audioPlayer;
 +(instancetype)sharedInstance;
--(void) play: (NSString *) fileURL;
+-(void) play: (NSString *) sourceFilePath isRecording: (BOOL) isRecording filter:(id)filter;
 -(OBNSound *) record: (NSString *)filePath;
 -(void) stop;
 -(void) addFilter: (OBFilter) filter  path:(NSString *) filePath;
 -(void) addEffect: (OBEffect) effect;
 -(void) saveTo: (NSString *) path;
+-(void) playNotification:(NSString *) sourceFilePath;
 @end

@@ -47,6 +47,7 @@
 		20C48F701992C723008D17D5 /* OBNMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C48F6E1992C723008D17D5 /* OBNMessageViewController.m */; };
 		20C48F711992C723008D17D5 /* OBNMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20C48F6F1992C723008D17D5 /* OBNMessageViewController.xib */; };
 		20C48F75199598EA008D17D5 /* OBNDelivery.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C48F74199598EA008D17D5 /* OBNDelivery.m */; };
+		20C48F78199D5B4E008D17D5 /* OBNAutoTuneFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C48F77199D5B4E008D17D5 /* OBNAutoTuneFilter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +141,9 @@
 		20C48F6F1992C723008D17D5 /* OBNMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OBNMessageViewController.xib; path = ../OBNMessageViewController.xib; sourceTree = "<group>"; };
 		20C48F73199598EA008D17D5 /* OBNDelivery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBNDelivery.h; sourceTree = "<group>"; };
 		20C48F74199598EA008D17D5 /* OBNDelivery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBNDelivery.m; sourceTree = "<group>"; };
+		20C48F76199D5B4E008D17D5 /* OBNAutoTuneFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBNAutoTuneFilter.h; sourceTree = "<group>"; };
+		20C48F77199D5B4E008D17D5 /* OBNAutoTuneFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBNAutoTuneFilter.m; sourceTree = "<group>"; };
+		20C48F79199DFE7A008D17D5 /* proc.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = proc.m4a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +212,8 @@
 			children = (
 				20C48F6A1991B07C008D17D5 /* OBNAudioManager.h */,
 				20C48F6B1991B07C008D17D5 /* OBNAudioManager.m */,
+				20C48F76199D5B4E008D17D5 /* OBNAutoTuneFilter.h */,
+				20C48F77199D5B4E008D17D5 /* OBNAutoTuneFilter.m */,
 				2002048A198976AA00A8C732 /* OBNAppDelegate.h */,
 				2002048B198976AA00A8C732 /* OBNAppDelegate.m */,
 				2002050F198992F000A8C732 /* OBNServerCommunicator.h */,
@@ -225,6 +231,7 @@
 		20020482198976AA00A8C732 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				20C48F79199DFE7A008D17D5 /* proc.m4a */,
 				20020483198976AA00A8C732 /* Obnoxx-Info.plist */,
 				20020484198976AA00A8C732 /* InfoPlist.strings */,
 				20020487198976AA00A8C732 /* main.m */,
@@ -438,6 +445,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20C48F78199D5B4E008D17D5 /* OBNAutoTuneFilter.m in Sources */,
 				2002052B198995CC00A8C732 /* AFURLConnectionOperation.m in Sources */,
 				20020488198976AA00A8C732 /* main.m in Sources */,
 				2002048C198976AA00A8C732 /* OBNAppDelegate.m in Sources */,

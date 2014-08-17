@@ -179,7 +179,7 @@
             filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"sound.m4a"];
             [urlData writeToFile:filePath atomically:YES];
         }
-        [audioManager play:filePath];
+        [audioManager play:filePath isRecording:NO filter:nil];
     });
     
 }
