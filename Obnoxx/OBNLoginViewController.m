@@ -14,8 +14,8 @@
 
 @interface OBNLoginViewController ()
 
-@property (nonatomic, strong) IBOutlet UITextField *phoneNumber;
-@property (nonatomic, strong) IBOutlet UIButton *verify;
+@property (nonatomic, strong) IBOutlet UITextField *phoneNumberTextField;
+@property (nonatomic, strong) IBOutlet UIButton *verifyButton;
 
 - (IBAction)verify:(id)sender;
 
@@ -30,7 +30,7 @@
              forKeyPath:@"verifyResponse"
                 options:NSKeyValueObservingOptionNew
                 context:nil];
-    [server verifyPhoneNumber:self.phoneNumber.text];
+    [server verifyPhoneNumber:self.phoneNumberTextField.text];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -47,7 +47,8 @@
         appState.temporaryToken = [response valueForKey:@"temporaryUserCode"];
         dispatch_async(dispatch_get_main_queue(), ^{[appState saveToDisk];});
             
-        OBNSMSVerificationViewController *smsCodeEntry = [[OBNSMSVerificationViewController alloc]init];
+        OBNSMSVerificationViewController *smsCodeEntry =
+                [[OBNSMSVerificationViewController alloc]init];
         [self presentViewController:smsCodeEntry animated:YES completion: ^{}];
     } else {
         // Something was wrong at this step
@@ -112,7 +113,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.phoneNumber.delegate = self;
+    self.phoneNumberTextField.delegate = self;
 }
 
 - (void)viewDidAppear:(BOOL)animated {

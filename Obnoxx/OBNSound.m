@@ -10,8 +10,7 @@
 
 @implementation OBNSound
 
-- (instancetype)initWithDictionary:(NSDictionary *)sound
-{
+- (instancetype)initWithDictionary:(NSDictionary *)sound {
     self = [super init];
     
     if (self) {

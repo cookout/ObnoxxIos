@@ -15,14 +15,17 @@
 // http://blackbe.lt/safely-handling-json-hijacking-prevention-methods-with-jquery/
 - (id)responseObjectForResponse:(NSURLResponse *)response
                            data:(NSData *)data
-                          error:(NSError *__autoreleasing *)error
-{
+                          error:(NSError *__autoreleasing *)error {
     NSString *hijackingPrefix = @"&&&PREFIX&&&";
-    int prefixLength = hijackingPrefix.length;
-    NSString *responseString = [[NSString alloc] initWithData:data encoding:self.stringEncoding];
+    NSString *responseString =
+            [[NSString alloc] initWithData:data
+                                  encoding:self.stringEncoding];
     if ([responseString hasPrefix:hijackingPrefix]) {
+        int prefixLength = hijackingPrefix.length;
+        data = [data subdataWithRange:NSMakeRange(prefixLength,
+                                                  data.length - prefixLength)];
         return [super responseObjectForResponse:response
-                                           data:[data subdataWithRange:NSMakeRange(prefixLength, data.length - prefixLength)]
+                                           data:data
                                           error:error];
     } else {
         return [super responseObjectForResponse:response

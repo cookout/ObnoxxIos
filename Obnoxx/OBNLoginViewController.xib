@@ -6,8 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OBNLoginViewController">
             <connections>
-                <outlet property="phoneNumber" destination="qlr-EW-Tw0" id="UKV-4k-k5u"/>
-                <outlet property="verify" destination="kio-hq-QiP" id="l2b-Hs-juU"/>
+                <outlet property="phoneNumberTextField" destination="qlr-EW-Tw0" id="7eF-8b-0bj"/>
+                <outlet property="verifyButton" destination="kio-hq-QiP" id="BRm-hI-8vq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

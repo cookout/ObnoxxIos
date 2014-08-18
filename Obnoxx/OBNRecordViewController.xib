@@ -6,11 +6,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OBNRecordViewController">
             <connections>
-                <outlet property="play" destination="weX-NU-Gh9" id="9TE-bq-2GZ"/>
-                <outlet property="receiver" destination="z4G-Lo-V7g" id="Ckq-RB-4gt"/>
-                <outlet property="record" destination="rYI-FO-esa" id="MPi-eE-n1n"/>
-                <outlet property="send" destination="doj-MT-NhX" id="TpW-dx-5TY"/>
-                <outlet property="stop" destination="UAI-Ki-lgQ" id="gAC-Ek-6NU"/>
+                <outlet property="playButton" destination="weX-NU-Gh9" id="m1s-wH-qYc"/>
+                <outlet property="recipientPhoneNumberTextField" destination="z4G-Lo-V7g" id="dJm-XJ-pkM"/>
+                <outlet property="recordButton" destination="rYI-FO-esa" id="VkZ-h6-c1M"/>
+                <outlet property="sendButton" destination="doj-MT-NhX" id="YIL-R8-85a"/>
+                <outlet property="stopButton" destination="UAI-Ki-lgQ" id="af0-Y2-NfA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

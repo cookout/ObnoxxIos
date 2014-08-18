@@ -14,11 +14,11 @@
 
 @interface OBNRecordViewController ()
 
-@property (nonatomic, strong) IBOutlet UIButton *play;
-@property (nonatomic, strong) IBOutlet UIButton *stop;
-@property (nonatomic, strong) IBOutlet UIButton *record;
-@property (nonatomic, strong) IBOutlet UIButton *send;
-@property (nonatomic, strong) IBOutlet UITextField *receiver;
+@property (nonatomic, strong) IBOutlet UIButton *playButton;
+@property (nonatomic, strong) IBOutlet UIButton *stopButton;
+@property (nonatomic, strong) IBOutlet UIButton *recordButton;
+@property (nonatomic, strong) IBOutlet UIButton *sendButton;
+@property (nonatomic, strong) IBOutlet UITextField *recipientPhoneNumberTextField;
 
 - (IBAction)play:(id)sender;
 - (IBAction)record:(id)sender;
@@ -58,7 +58,7 @@
     
     [server sendSound:newName
              fileName:@"proc.m4a"
-       recipientPhone:self.receiver.text];
+       recipientPhone:self.recipientPhoneNumberTextField.text];
 }
 
 
@@ -127,7 +127,7 @@
 }
 
 - (IBAction)stop:(id)sender {
-    [[OBNAudioManager sharedInstance]stop];
+    [[OBNAudioManager sharedInstance] stop];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil
