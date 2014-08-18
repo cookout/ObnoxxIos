@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OBNLoginViewController : UIViewController
+@interface OBNLoginViewController : UIViewController <UITextFieldDelegate>
 
 @end

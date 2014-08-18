@@ -34,11 +34,11 @@
     [manager GET:@"http://obnoxx.co/verifyPhoneNumber" parameters:parameters
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              // Sucessfully sent sound to intended recipient, handle it here
-             self.verifyResponse = responseObject;
+             self.verifyResponse = (NSDictionary *)responseObject;
          }
          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              // Sound send failed, handle it here
-             self.verifyResponse = operation.responseObject;
+             self.verifyResponse = (NSDictionary *)operation.responseObject;
          }];
 }
 
@@ -57,11 +57,11 @@
     [manager GET:@"http://obnoxx.co/verifyPhoneNumber" parameters:parameters
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              // Sucessfully sent sound to intended recipient, handle it here
-             self.verifyResponse = responseObject;
+             self.verifyResponse = (NSDictionary *)responseObject;
          }
          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              // Sound send failed, handle it here
-             self.verifyResponse = operation.responseObject;
+             self.verifyResponse = (NSDictionary *)operation.responseObject;
          }];
 }
 
@@ -88,12 +88,12 @@
         success:^(AFHTTPRequestOperation *operation, id responseObject) {
             // Sucessfully sent sound to intended recipient, handle it here
             NSLog(@"Send success %@", responseObject);
-            self.uploadResponse = responseObject;
+            self.uploadResponse = (NSDictionary *)responseObject;
         }
         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             // Sound send failed, handle it here
             NSLog(@"Send failed %@", operation);
-            self.uploadResponse = operation.responseObject;
+            self.uploadResponse = (NSDictionary *)operation.responseObject;
         }];
 }
 
@@ -122,12 +122,11 @@
     [manager POST:@"http://obnoxx.co/addDeviceRegistrationId" parameters:parameters
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              // Sucessfully sent sound to intended recipient, handle it here
-             NSLog(@"Registered successfully %@",responseObject);
+             NSLog(@"Registered successfully %@", responseObject);
          }
          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              // Sound send failed, handle it here
-             NSLog(@"Register failed %@",operation.responseObject);
-            
+             NSLog(@"Register failed %@", operation.responseObject);
          }];
 }
 

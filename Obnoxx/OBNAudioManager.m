@@ -47,7 +47,7 @@
         [_playbackController
                 removeChannels:[NSArray arrayWithObjects:notificationPlayer, nil]];
     };
-    
+
     [_playbackController addChannels:[NSArray arrayWithObjects:notificationPlayer,nil]];
 }
 
@@ -181,9 +181,9 @@
         {
             //AudioComponentDescription popHero = AEAudioComponentDescriptionMake(kAudioUnitManufacturer_Apple, kAudioUnitType_FormatConverter, kAudioUnitSubType_NewTimePitch);
             
-            AEAudioUnitFilter *popHeroUnit = [[OBNAutoTuneFilter alloc] init];
+            OBNAutoTuneFilter *popHeroUnit = [[OBNAutoTuneFilter alloc] init];
             [_playbackController addFilter:popHeroUnit];
-            
+  
             NSRange fileName = [filePath rangeOfString:[filePath lastPathComponent]];
             NSRange path = NSMakeRange(0, filePath.length-fileName.length);
             NSMutableString *newName = [[NSMutableString alloc] initWithString:[filePath substringWithRange:path]];

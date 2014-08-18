@@ -13,14 +13,14 @@
 
 @interface OBNServerCommunicator : NSObject
 
-@property (nonatomic, retain) NSObject *verifyResponse;
-@property (nonatomic, retain) NSObject *uploadResponse;
-@property (nonatomic, retain) NSObject *loginResponse;
-@property (nonatomic, retain) NSObject *soundsResponse;
+@property (nonatomic, retain) NSDictionary *verifyResponse;
+@property (nonatomic, retain) NSDictionary *uploadResponse;
+@property (nonatomic, retain) NSDictionary *loginResponse;
+@property (nonatomic, retain) NSDictionary *soundsResponse;
 
 + (instancetype)sharedInstance;
-- (void)verifyPhoneNumber:(NSString *) phoneNumber;
-- (void)verifyCode: (NSString *) verificationCode;
+- (void)verifyPhoneNumber:(NSString *)phoneNumber;
+- (void)verifyCode:(NSString *)verificationCode;
 - (void)sendSound:(NSString *)filePath
          fileName:(NSString *)fileName
    recipientPhone:(NSString *)recipientPhone;

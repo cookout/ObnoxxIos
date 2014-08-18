@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "AEAudioController.h"
 
-@interface OBNAutoTuneFilter : NSObject
+@interface OBNAutoTuneFilter : NSObject <AEAudioFilter>
 
 @end

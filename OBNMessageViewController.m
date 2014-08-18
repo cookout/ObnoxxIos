@@ -12,44 +12,36 @@
 #import "OBNState.h"
 #import "OBNAudioManager.h"
 
-
-
-@interface OBNMessageViewController ()
-
-@end
-
 @implementation OBNMessageViewController
 
--(void) loadMessages
-{
+- (void)loadMessages {
     OBNServerCommunicator *server = [OBNServerCommunicator sharedInstance];
-    [server addObserver:self forKeyPath:@"soundsResponse" options:NSKeyValueChangeNewKey context:@"getSounds"];
+    [server addObserver:self
+             forKeyPath:@"soundsResponse"
+                options:NSKeyValueObservingOptionNew
+                context:nil];
     [server getSounds];
 }
 
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(NSObject *)response change:(NSString *)change context:(id) context
-{
-    if([context isEqualToString:@"getSounds"])
-    {
-        // Check if request succeeded
-        OBNServerCommunicator *server = response;
-        OBNState *appState = [OBNState sharedInstance];
-        int success = ((NSString *)[server.soundsResponse valueForKey:@"success"]).intValue;
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(NSObject *)serverCommunicator
+                        change:(NSString *)change
+                       context:(void *)context {
+    // Check if request succeeded
+    NSDictionary *soundsResponse =
+            ((OBNServerCommunicator *)serverCommunicator).soundsResponse;
+    OBNState *appState = [OBNState sharedInstance];
+    int success = ((NSString *)[soundsResponse valueForKey:@"success"]).intValue;
         
-        if(success)
-        {
-            // Populate the local data model with results
-            appState.deliveries = [server.soundsResponse valueForKey:@"soundDeliveries"];
-            appState.users = [server.soundsResponse valueForKey:@"users"];
-            appState.sounds = [server.soundsResponse valueForKey:@"sounds"];
-            [appState saveToDisk];
-            [self.tableView reloadData];
-        }
-        else
-        {
-            // Something was wrong at this step
-        }
-        
+    if (success) {
+        // Populate the local data model with results
+        appState.deliveries = [soundsResponse valueForKey:@"soundDeliveries"];
+        appState.users = [soundsResponse valueForKey:@"users"];
+        appState.sounds = [soundsResponse valueForKey:@"sounds"];
+        [appState saveToDisk];
+        [self.tableView reloadData];
+    } else {
+        // Something was wrong at this step
     }
 }
 

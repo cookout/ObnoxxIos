@@ -7,7 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OBNLoginViewController">
             <connections>
                 <outlet property="phoneNumber" destination="qlr-EW-Tw0" id="UKV-4k-k5u"/>
-                <outlet property="verfiy" destination="kio-hq-QiP" id="Mfw-xg-oaU"/>
+                <outlet property="verify" destination="kio-hq-QiP" id="l2b-Hs-juU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

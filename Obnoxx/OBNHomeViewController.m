@@ -10,18 +10,12 @@
 #import "OBNRecordViewController.h"
 #import "OBNMessageViewController.h"
 
-@interface OBNHomeViewController ()
-
-@end
-
 @implementation OBNHomeViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil
+               bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
-        
         // Create the record and message list views, add them to an array
         // and turn that array assign that array as the view controllers list
         // for this tab bar controller
@@ -31,21 +25,8 @@
         
         NSArray *coreViews = [[NSArray alloc] initWithObjects:recorder,messages,nil];
         self.viewControllers = coreViews;
-        //self.restorationIdentifier = @"OBNHomeViewController";
     }
     return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /*
