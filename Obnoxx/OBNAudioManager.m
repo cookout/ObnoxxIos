@@ -10,8 +10,7 @@
 
 @implementation OBNAudioManager
 
-+ (instancetype)sharedInstance
-{
++ (instancetype)sharedInstance {
     static OBNAudioManager *sharedInstance = nil;
     static dispatch_once_t onceToken;
     
@@ -22,43 +21,42 @@
     });
     return sharedInstance;
 }
--(instancetype) init
-{
+
+- (instancetype)init {
     self = [super init];
-    if(self)
-    {
+    if (self) {
         _recordingController = nil;
         _audioRecorder = nil;
         _audioPlayer = nil;
-        _playbackController =[[AEAudioController alloc]
-                              initWithAudioDescription:[AEAudioController nonInterleaved16BitStereoAudioDescription]
-                              inputEnabled:NO];
+        _playbackController = [[AEAudioController alloc]
+                initWithAudioDescription:[AEAudioController nonInterleaved16BitStereoAudioDescription]
+                             inputEnabled:NO];
         [_playbackController start:nil];
     }
     return self;
 }
 
--(void) playNotification:(NSString *) sourceFilePath
-{
+- (void)playNotification:(NSString *)sourceFilePath {
     NSURL *file = [NSURL fileURLWithPath:sourceFilePath];
-    AEAudioFilePlayer *notificationPlayer = [AEAudioFilePlayer audioFilePlayerWithURL:file
-                                                 audioController:_playbackController
-                                                           error:NULL];
+    AEAudioFilePlayer *notificationPlayer =
+            [AEAudioFilePlayer audioFilePlayerWithURL:file
+                                      audioController:_playbackController
+                                                error:NULL];
     notificationPlayer.completionBlock = ^{
         // Remove self from channel list after playback is complete
-        [_playbackController removeChannels:[NSArray arrayWithObjects:notificationPlayer,nil]] ;
-        
+        [_playbackController
+                removeChannels:[NSArray arrayWithObjects:notificationPlayer, nil]];
     };
     
     [_playbackController addChannels:[NSArray arrayWithObjects:notificationPlayer,nil]];
 }
 
--(void) play: (NSString *) sourceFilePath isRecording: (BOOL) isRecording filter:(id) filter
-{
-    if(!_playbackController)
-    {
+- (void)play:(NSString *)sourceFilePath
+ isRecording:(BOOL)isRecording
+      filter:(id)filter {
+    if (!_playbackController) {
         _playbackController = [[AEAudioController alloc]
-                            initWithAudioDescription:[AEAudioController nonInterleaved16BitStereoAudioDescription]
+                initWithAudioDescription:[AEAudioController nonInterleaved16BitStereoAudioDescription]
                             inputEnabled:NO];
         
         NSError *err = [[NSError alloc] init];
@@ -66,16 +64,15 @@
     }
 
     NSRange fileName = [sourceFilePath rangeOfString:[sourceFilePath lastPathComponent]];
-    NSRange path = NSMakeRange(0, sourceFilePath.length-fileName.length);
+    NSRange path = NSMakeRange(0, sourceFilePath.length - fileName.length);
     NSMutableString *newName = [[NSMutableString alloc] initWithString:[sourceFilePath substringWithRange:path]];
     [newName appendString:@"proc.m4a"];
 
     NSURL *file = [NSURL fileURLWithPath:sourceFilePath];
     self.audioPlayer = [AEAudioFilePlayer audioFilePlayerWithURL:file
-                                            audioController:_playbackController
-                                             error:NULL];
-    if(isRecording)
-    {
+                                                 audioController:_playbackController
+                                                           error:NULL];
+    if (isRecording) {
         // Add a completion handler that completes the recording and removes
         // the recorder from the graph
         self.audioPlayer.completionBlock = ^{
@@ -85,41 +82,45 @@
             self.audioRecorder = nil;
             
             // If there's a filter in the audiograph, remove it
-            if(filter)
-            {
+            if (filter) {
                 [_playbackController removeFilter:filter];
             }
             
             // Remove self from channel list after playback is complete
-            [_playbackController removeChannels:[NSArray arrayWithObjects:self.audioPlayer,nil]] ;
+            [_playbackController removeChannels:[NSArray arrayWithObjects:self.audioPlayer, nil]];
         };
     }
-    [_playbackController addChannels:[NSArray arrayWithObjects:self.audioPlayer,nil]];
+    [_playbackController addChannels:[NSArray arrayWithObjects:self.audioPlayer, nil]];
  }
 
 
--(void) addFilter: (OBFilter) filter  path:(NSString *) filePath
-{
-    if(!_playbackController)
-    {
+- (void)addFilter:(OBFilter)filter
+             path:(NSString *)filePath {
+    if (!_playbackController) {
         _playbackController = [[AEAudioController alloc]
                             initWithAudioDescription:[AEAudioController nonInterleaved16BitStereoAudioDescription]
                             inputEnabled:NO];
         [_playbackController start:nil];
     }
-    switch(filter)
-    {
+    switch(filter) {
         case kCuji:
         {
             AudioComponentDescription cuji = AEAudioComponentDescriptionMake(kAudioUnitManufacturer_Apple, kAudioUnitType_FormatConverter, kAudioUnitSubType_NewTimePitch);
             
-            AEAudioUnitFilter *cujiUnit = [[AEAudioUnitFilter alloc] initWithComponentDescription:cuji
-                                                                                    audioController:_playbackController error:nil];
+            AEAudioUnitFilter *cujiUnit =
+                    [[AEAudioUnitFilter alloc] initWithComponentDescription:cuji
+                                                            audioController:_playbackController
+                                                                      error:nil];
             
-            if(!cujiUnit) NSLog(@"Trouble creating Cuji unit");
-            AudioUnitSetParameter(cujiUnit.audioUnit, kNewTimePitchParam_Pitch,
-                                  kAudioUnitScope_Global,0,
-                                  1800.f, 0);
+            if (!cujiUnit) {
+                NSLog(@"Trouble creating Cuji unit");
+            }
+            AudioUnitSetParameter(cujiUnit.audioUnit,
+                                  kNewTimePitchParam_Pitch,
+                                  kAudioUnitScope_Global,
+                                  0,
+                                  1800.f,
+                                  0);
             [_playbackController addFilter:cujiUnit];
             
             // Path to store processed file
@@ -130,33 +131,48 @@
             
             // Add the audio recorder to the audio graph
             self.audioRecorder = [[AERecorder alloc] initWithAudioController:_playbackController];
-            [self.audioRecorder beginRecordingToFileAtPath:newName fileType:kAudioFileM4AType error:nil];
+            [self.audioRecorder beginRecordingToFileAtPath:newName
+                                                  fileType:kAudioFileM4AType
+                                                     error:nil];
             [_playbackController addOutputReceiver:self.audioRecorder];
             
             // Run the graph
             [self play:filePath isRecording:YES filter:cujiUnit];
             break;
         }
-        case kKaraka:
-        {
-            AudioComponentDescription karaka = AEAudioComponentDescriptionMake(kAudioUnitManufacturer_Apple, kAudioUnitType_FormatConverter, kAudioUnitSubType_NewTimePitch);
+        case kKaraka: {
+            AudioComponentDescription karaka = AEAudioComponentDescriptionMake(
+                    kAudioUnitManufacturer_Apple,
+                    kAudioUnitType_FormatConverter,
+                    kAudioUnitSubType_NewTimePitch);
             
-            AEAudioUnitFilter *karakaUnit = [[AEAudioUnitFilter alloc] initWithComponentDescription:karaka
-                                                                                    audioController:_playbackController error:nil];
+            AEAudioUnitFilter *karakaUnit =
+                    [[AEAudioUnitFilter alloc] initWithComponentDescription:karaka
+                                                            audioController:_playbackController
+                                                                      error:nil];
             
-            if(!karakaUnit) NSLog(@"Trouble creating Karaka unit");
-            AudioUnitSetParameter(karakaUnit.audioUnit, kNewTimePitchParam_Pitch,
-                                  kAudioUnitScope_Global,0,
-                                  -700.f, 0);
+            if (!karakaUnit) {
+                NSLog(@"Trouble creating Karaka unit");
+            }
+            AudioUnitSetParameter(karakaUnit.audioUnit,
+                                  kNewTimePitchParam_Pitch,
+                                  kAudioUnitScope_Global,
+                                  0,
+                                  -700.f,
+                                  0);
             [_playbackController addFilter:karakaUnit];
             
             NSRange fileName = [filePath rangeOfString:[filePath lastPathComponent]];
             NSRange path = NSMakeRange(0, filePath.length-fileName.length);
-            NSMutableString *newName = [[NSMutableString alloc] initWithString:[filePath substringWithRange:path]];
+            NSMutableString *newName =
+                    [[NSMutableString alloc] initWithString:[filePath substringWithRange:path]];
             [newName appendString:@"proc.m4a"];
             
-            self.audioRecorder = [[AERecorder alloc] initWithAudioController:_playbackController];
-            [self.audioRecorder beginRecordingToFileAtPath:newName fileType:kAudioFileM4AType error:nil];
+            self.audioRecorder =
+                    [[AERecorder alloc] initWithAudioController:_playbackController];
+            [self.audioRecorder beginRecordingToFileAtPath:newName
+                                                  fileType:kAudioFileM4AType
+                                                     error:nil];
             [_playbackController addOutputReceiver:self.audioRecorder];
             [self play:filePath isRecording:YES filter:karakaUnit];
             break;
@@ -173,8 +189,11 @@
             NSMutableString *newName = [[NSMutableString alloc] initWithString:[filePath substringWithRange:path]];
             [newName appendString:@"proc.m4a"];
             
-            self.audioRecorder = [[AERecorder alloc] initWithAudioController:_playbackController];
-            [self.audioRecorder beginRecordingToFileAtPath:newName fileType:kAudioFileM4AType error:nil];
+            self.audioRecorder =
+                    [[AERecorder alloc] initWithAudioController:_playbackController];
+            [self.audioRecorder beginRecordingToFileAtPath:newName
+                                                  fileType:kAudioFileM4AType
+                                                     error:nil];
             [_playbackController addOutputReceiver:self.audioRecorder];
             
             [self play:filePath isRecording:YES filter:popHeroUnit];
@@ -188,24 +207,16 @@
         {
             break;
         }
-        default:
-        {
-            
-        }
     }
 }
 
--(void) addEffect: (OBEffect) effect
-{
-    
+- (void)addEffect:(OBEffect)effect {
 }
 
--(OBNSound *) record: (NSString *)filePath
-{
-    if(!_recordingController)
-    {
+- (OBNSound *)record:(NSString *)filePath {
+    if(!_recordingController) {
         _recordingController = [[AEAudioController alloc]
-                            initWithAudioDescription:[AEAudioController nonInterleaved16BitStereoAudioDescription]
+                initWithAudioDescription:[AEAudioController nonInterleaved16BitStereoAudioDescription]
                             inputEnabled:YES];
         [_recordingController start:nil];
     }
@@ -213,15 +224,14 @@
     OBNSound *recording = [[OBNSound alloc] init];
     recording.localUrl = filePath;
     
-    
     NSError *error = NULL;
     
     // Receive both audio input and audio output. Note that if you're using
-    // AEPlaythroughChannel, mentioned above, you may not need to receive the input again.
-    
-    if ( ![self.audioRecorder beginRecordingToFileAtPath:filePath
-                                                fileType:kAudioFileM4AType
-                                                   error:&error] ) {
+    // AEPlaythroughChannel, mentioned above, you may not need to receive the
+    // input again.
+    if (![self.audioRecorder beginRecordingToFileAtPath:filePath
+                                               fileType:kAudioFileM4AType
+                                                  error:&error]) {
         // Report error
         NSLog(@"Error initializing audio recorder");
         return nil;
@@ -231,8 +241,7 @@
     return recording;
 }
 
--(void) stop
-{
+- (void)stop {
     [self.recordingController removeInputReceiver:self.audioRecorder];
     [self.audioRecorder finishRecording];
     self.audioRecorder = nil;

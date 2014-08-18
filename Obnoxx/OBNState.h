@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "OBNUser.h"
 
-@interface OBNState : NSObject <NSCoding>
+@interface OBNState : NSObject
 
 @property (nonatomic, strong) NSString *temporaryToken;
 @property (nonatomic, strong) NSString *sessionId;

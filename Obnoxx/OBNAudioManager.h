@@ -28,17 +28,21 @@ typedef enum {
 } OBEffect;
 
 @interface OBNAudioManager : NSObject
+
 @property (nonatomic, strong) AEAudioController *playbackController;
 @property (nonatomic, strong) AEAudioController *recordingController;
-
 @property (nonatomic, strong) AERecorder *audioRecorder;
 @property (nonatomic, strong) AEAudioFilePlayer *audioPlayer;
-+(instancetype)sharedInstance;
--(void) play: (NSString *) sourceFilePath isRecording: (BOOL) isRecording filter:(id)filter;
--(OBNSound *) record: (NSString *)filePath;
--(void) stop;
--(void) addFilter: (OBFilter) filter  path:(NSString *) filePath;
--(void) addEffect: (OBEffect) effect;
--(void) saveTo: (NSString *) path;
--(void) playNotification:(NSString *) sourceFilePath;
+
++ (instancetype)sharedInstance;
+- (void)play:(NSString *)sourceFilePath
+ isRecording:(BOOL)isRecording
+      filter:(id)filter;
+- (OBNSound *)record:(NSString *)filePath;
+- (void)stop;
+- (void)addFilter:(OBFilter)filter
+             path:(NSString *)filePath;
+- (void)addEffect:(OBEffect)effect;
+- (void)playNotification:(NSString *)sourceFilePath;
+
 @end
