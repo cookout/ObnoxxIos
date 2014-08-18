@@ -91,8 +91,7 @@
         };
     }
     [_playbackController addChannels:[NSArray arrayWithObjects:self.audioPlayer, nil]];
- }
-
+}
 
 - (void)addFilter:(OBFilter)filter
              path:(NSString *)filePath {
