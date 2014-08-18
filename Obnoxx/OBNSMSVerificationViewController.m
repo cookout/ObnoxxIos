@@ -46,7 +46,9 @@
         OBNHomeViewController *hvc = [[OBNHomeViewController alloc] init];
         OBNState *appState = [OBNState sharedInstance];
         appState.sessionId = [verifyResponse valueForKeyPath:@"sessionId"];
-        dispatch_async(dispatch_get_main_queue(), ^{[appState saveToDisk];});
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [appState saveToDisk];
+        });
         [self presentViewController:hvc animated:YES completion:^{}];
     } else {
         // Something was wrong at this step

@@ -43,4 +43,5 @@ static OSStatus filterCallback(
 - (AEAudioControllerFilterCallback)filterCallback {
     return filterCallback;
 }
+
 @end

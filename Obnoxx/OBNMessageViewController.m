@@ -45,9 +45,7 @@
     }
 }
 
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -58,33 +56,31 @@
     [self loadMessages];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView
+         numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     OBNState *appState = [OBNState sharedInstance];
-    if(appState.deliveries)
-      return [OBNState sharedInstance].deliveries.count;
-    
-    else return 0;
+    if (appState.deliveries) {
+        return [OBNState sharedInstance].deliveries.count;
+    } else {
+        return 0;
+    }
 }
 
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     OBNState *appState = [OBNState sharedInstance];
     
@@ -93,7 +89,6 @@
     
     return cell;
 }
-
 
 /*
 // Override to support conditional editing of the table view.
@@ -133,9 +128,8 @@
 }
 */
 
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView
+        didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // User selected a sound, play it back
     OBNState *appState = [OBNState sharedInstance];
     NSDictionary *delivery = appState.deliveries[indexPath.row];
@@ -143,15 +137,10 @@
     
     NSString *soundURL;
     NSString *soundId = [delivery valueForKey:@"soundId"];
-    NSString *s;
-    
-    
-    int i=0;
-    for(i=0;i<sounds.count;i++)
-    {
-        s = [sounds[i] valueForKey:@"id"];
-        if([soundId isEqualToString:s])
-        {
+
+    for (int i = 0; i < sounds.count; i++) {
+        NSString *s = [sounds[i] valueForKey:@"id"];
+        if ([soundId isEqualToString:s]) {
             NSLog(@"here");
             soundURL = [sounds[i] valueForKey:@"soundFileUrl"];
             break;
@@ -159,22 +148,21 @@
     }
     OBNAudioManager *audioManager = [OBNAudioManager sharedInstance];
     
-    dispatch_async(dispatch_get_main_queue(), ^ {
-        NSURL  *url = [NSURL URLWithString:soundURL];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSURL *url = [NSURL URLWithString:soundURL];
         NSData *urlData = [NSData dataWithContentsOfURL:url];
-        NSString  *filePath;
-        if ( urlData )
-        {
-            NSArray       *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *filePath;
+        if (urlData) {
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(
+                    NSDocumentDirectory, NSUserDomainMask, YES);
             NSString  *documentsDirectory = [paths objectAtIndex:0];
             
-            filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"sound.m4a"];
+            filePath = [NSString stringWithFormat:@"%@/%@",
+                    documentsDirectory,@"sound.m4a"];
             [urlData writeToFile:filePath atomically:YES];
         }
         [audioManager play:filePath isRecording:NO filter:nil];
     });
-    
 }
-
 
 @end

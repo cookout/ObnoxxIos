@@ -24,10 +24,12 @@
         } else {
             _recipientUserId = nil;
         }
+
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss Z"];
         [formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"PST"]];
-        _deliveryDateTime = [formatter dateFromString:[delivery valueForKey:@"deliveryDateTime"]];
+        _deliveryDateTime =
+                [formatter dateFromString:[delivery valueForKey:@"deliveryDateTime"]];
     }
     
     return self;

@@ -65,7 +65,8 @@
 
     NSRange fileName = [sourceFilePath rangeOfString:[sourceFilePath lastPathComponent]];
     NSRange path = NSMakeRange(0, sourceFilePath.length - fileName.length);
-    NSMutableString *newName = [[NSMutableString alloc] initWithString:[sourceFilePath substringWithRange:path]];
+    NSMutableString *newName =
+            [[NSMutableString alloc] initWithString:[sourceFilePath substringWithRange:path]];
     [newName appendString:@"proc.m4a"];
 
     NSURL *file = [NSURL fileURLWithPath:sourceFilePath];
@@ -104,8 +105,10 @@
     switch(filter) {
         case kCuji:
         {
-            AudioComponentDescription cuji = AEAudioComponentDescriptionMake(kAudioUnitManufacturer_Apple, kAudioUnitType_FormatConverter, kAudioUnitSubType_NewTimePitch);
-            
+            AudioComponentDescription cuji = AEAudioComponentDescriptionMake(
+                    kAudioUnitManufacturer_Apple,
+                    kAudioUnitType_FormatConverter,
+                    kAudioUnitSubType_NewTimePitch);
             AEAudioUnitFilter *cujiUnit =
                     [[AEAudioUnitFilter alloc] initWithComponentDescription:cuji
                                                             audioController:_playbackController
@@ -149,7 +152,6 @@
                     [[AEAudioUnitFilter alloc] initWithComponentDescription:karaka
                                                             audioController:_playbackController
                                                                       error:nil];
-            
             if (!karakaUnit) {
                 NSLog(@"Trouble creating Karaka unit");
             }
@@ -185,7 +187,8 @@
   
             NSRange fileName = [filePath rangeOfString:[filePath lastPathComponent]];
             NSRange path = NSMakeRange(0, filePath.length-fileName.length);
-            NSMutableString *newName = [[NSMutableString alloc] initWithString:[filePath substringWithRange:path]];
+            NSMutableString *newName =
+                    [[NSMutableString alloc] initWithString:[filePath substringWithRange:path]];
             [newName appendString:@"proc.m4a"];
             
             self.audioRecorder =

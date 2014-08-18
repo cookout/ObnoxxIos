@@ -142,31 +142,31 @@
     manager.responseSerializer = [[OBNJSONResponseSerializer alloc] init];
     
     [manager GET:@"http://obnoxx.co/getSoundDelivery" parameters:parameters
-          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-              // Sucessfully sent sound to intended recipient, handle it here
-              NSLog(@"Get sound delivery successfully %@",responseObject);
-              OBNAudioManager *audioManager = [OBNAudioManager sharedInstance];
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             // Sucessfully sent sound to intended recipient, handle it here
+             NSLog(@"Get sound delivery successfully %@",responseObject);
+             OBNAudioManager *audioManager = [OBNAudioManager sharedInstance];
               
-              dispatch_async(dispatch_get_main_queue(), ^{
-                  NSURL *url = [NSURL URLWithString:[[responseObject valueForKey:@"sound"]
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 NSURL *url = [NSURL URLWithString:[[responseObject valueForKey:@"sound"]
                                                                     valueForKey:@"soundFileUrl"]];
-                  NSData *urlData = [NSData dataWithContentsOfURL:url];
-                  NSString  *filePath;
-                  if (urlData) {
-                      NSArray *paths = NSSearchPathForDirectoriesInDomains(
-                              NSDocumentDirectory, NSUserDomainMask, YES);
-                      NSString  *documentsDirectory = [paths objectAtIndex:0];
+                 NSData *urlData = [NSData dataWithContentsOfURL:url];
+                 NSString  *filePath;
+                 if (urlData) {
+                     NSArray *paths = NSSearchPathForDirectoriesInDomains(
+                             NSDocumentDirectory, NSUserDomainMask, YES);
+                     NSString *documentsDirectory = [paths objectAtIndex:0];
                   
-                      filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"sound.m4a"];
-                      [urlData writeToFile:filePath atomically:YES];
-                  }
-                  [audioManager playNotification:filePath];
-              });
-          }
-          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-              // Sound send failed, handle it here
-              NSLog(@"Get sound delivery failed %@", operation);
-          }];
+                     filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"sound.m4a"];
+                     [urlData writeToFile:filePath atomically:YES];
+                 }
+                 [audioManager playNotification:filePath];
+             });
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             // Sound send failed, handle it here
+             NSLog(@"Get sound delivery failed %@", operation);
+         }];
 }
 
 - (void)getSounds {
