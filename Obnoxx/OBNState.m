@@ -22,33 +22,25 @@
 
 @implementation OBNState
 
-+(instancetype) sharedInstance
-{
++ (instancetype)sharedInstance {
     static OBNState *sharedInstance = nil;
     static dispatch_once_t onceToken;
     NSString *filePath = [kSavePath stringByAppendingPathComponent:kFileName];
     BOOL validPath =[[NSFileManager defaultManager] fileExistsAtPath:filePath];
 
     dispatch_once(&onceToken, ^{
-        if (!sharedInstance)
-        {
+        if (!sharedInstance) {
             // Check if there's file that has saved state for user state
-            if(!validPath)
-            {
+            if (!validPath) {
                 // No save file found, create an empty state object & return in
                 sharedInstance = [[OBNState alloc] init];
-            }
-            else
-            {
+            } else {
                 // Save file found - create shared instance from previous save state
                 NSData *codedData = [[NSData alloc] initWithContentsOfFile:filePath];
-                if (codedData == nil)
-                {
+                if (codedData == nil) {
                     // Bad data in file
                     sharedInstance = [[OBNState alloc] init];
-                }
-                else
-                {
+                } else {
                     // Great - create and setup the shared instance with shared values
                     NSKeyedUnarchiver *decoder = [[NSKeyedUnarchiver alloc] initForReadingWithData:codedData];
                     sharedInstance = [[OBNState alloc] init];
@@ -69,39 +61,36 @@
 }
 
 // Save current session snapshot to disk
--(BOOL) saveToDisk
-{
+- (BOOL)saveToDisk {
     NSString *filePath = [kSavePath stringByAppendingPathComponent:kFileName];
-    BOOL createDir = [[NSFileManager defaultManager] createDirectoryAtPath:kSavePath
-                              withIntermediateDirectories:YES attributes:nil error:nil];
-    
-    if(!createDir)
+    if (![[NSFileManager defaultManager] createDirectoryAtPath:kSavePath
+                                   withIntermediateDirectories:YES
+                                                    attributes:nil
+                                                         error:nil]) {
         return NO;
-    
-    else
-    {
-        // Directory setup and ready - now save the file
-        NSMutableData *data = [[NSMutableData alloc] init];
-        NSKeyedArchiver *encoder = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
-
-        [encoder encodeObject:self.temporaryToken  forKey:kTemporaryTokenKey];
-        [encoder encodeObject:self.sessionId forKey:kSessionId];
-        [encoder encodeObject:self.currentUser  forKey:kCurrentUser];
-        [encoder encodeObject:self.deviceToken forKey:kDeviceToken];
-        [encoder encodeObject:self.isRegistered forKey:kRegistrationStatus];
-        [encoder encodeObject:self.deliveries forKey:kDeliveries];
-        [encoder encodeObject:self.sounds forKey:kSounds];
-        [encoder encodeObject:self.users forKey:kUsers];
-        
-        [encoder finishEncoding];
-        return [data writeToFile:filePath atomically:YES];
     }
+    
+    // Directory setup and ready - now save the file
+    NSMutableData *data = [[NSMutableData alloc] init];
+    NSKeyedArchiver *encoder =
+            [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+
+    [encoder encodeObject:self.temporaryToken  forKey:kTemporaryTokenKey];
+    [encoder encodeObject:self.sessionId forKey:kSessionId];
+    [encoder encodeObject:self.currentUser  forKey:kCurrentUser];
+    [encoder encodeObject:self.deviceToken forKey:kDeviceToken];
+    [encoder encodeObject:self.isRegistered forKey:kRegistrationStatus];
+    [encoder encodeObject:self.deliveries forKey:kDeliveries];
+    [encoder encodeObject:self.sounds forKey:kSounds];
+    [encoder encodeObject:self.users forKey:kUsers];
+        
+    [encoder finishEncoding];
+    return [data writeToFile:filePath atomically:YES];
 }
 
--(instancetype) init
-{
+- (instancetype)init {
     self = [super init];
-    if(self) {
+    if (self) {
         _temporaryToken = nil;
         _sessionId = nil;
         _currentUser = nil;

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface OBNUser : NSObject <NSCoding>
+
 @property (nonatomic, retain) NSString *id;
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSString *fbUserId;

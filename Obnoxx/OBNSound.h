@@ -10,11 +10,12 @@
 #import <AVFoundation/AVFoundation.h>
 
 @interface OBNSound : NSObject
+
 @property (nonatomic, retain) NSString *id;
 @property (nonatomic, retain) NSString *userId;
 @property (nonatomic, retain) NSString *soundFileUrl;
 @property (nonatomic, retain) NSString *localUrl;
--(instancetype) initWithDictionary: (NSDictionary *) sound;
+
+- (instancetype)initWithDictionary:(NSDictionary *)sound;
+
 @end
-
-

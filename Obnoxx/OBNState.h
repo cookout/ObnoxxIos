@@ -10,6 +10,7 @@
 #import "OBNUser.h"
 
 @interface OBNState : NSObject <NSCoding>
+
 @property (nonatomic, strong) NSString *temporaryToken;
 @property (nonatomic, strong) NSString *sessionId;
 @property (nonatomic, retain) OBNUser *currentUser;
@@ -19,6 +20,7 @@
 @property (nonatomic, retain) NSMutableArray *sounds;
 @property (nonatomic, retain) NSMutableArray *users;
 
-+(instancetype) sharedInstance;
--(BOOL) saveToDisk;
++ (instancetype)sharedInstance;
+- (BOOL)saveToDisk;
+
 @end

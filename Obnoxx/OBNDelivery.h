@@ -9,11 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @interface OBNDelivery : NSObject
+
 @property (nonatomic, retain) NSString *id;
 @property (nonatomic, retain) NSString *soundId;
 @property (nonatomic, retain) NSString *userId;
 @property (nonatomic, retain) NSString *phoneNumber;
 @property (nonatomic, retain) NSString *recipientUserId;
 @property (nonatomic, retain) NSDate *deliveryDateTime;
--(instancetype) initWithDictionary: (NSDictionary *) delivery;
+
+- (instancetype)initWithDictionary:(NSDictionary *)delivery;
+
 @end

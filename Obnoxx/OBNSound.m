@@ -9,11 +9,12 @@
 #import "OBNSound.h"
 
 @implementation OBNSound
--(instancetype) initWithDictionary: (NSDictionary *) sound
+
+- (instancetype)initWithDictionary:(NSDictionary *)sound
 {
     self = [super init];
     
-    if(self) {
+    if (self) {
         _id = [sound valueForKey:@"id"];
         _userId = [sound valueForKey:@"userId"];
         _soundFileUrl = [sound valueForKey:@"soundFileUrl"];

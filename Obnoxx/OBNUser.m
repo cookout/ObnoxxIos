@@ -15,10 +15,12 @@
 
 @implementation OBNUser
 
--(instancetype) initWithUserId:userId name:name fbUserId:fbUserId userPhoto:userPhoto
-{
+- (instancetype)initWithUserId:userId
+                          name:name
+                      fbUserId:fbUserId
+                     userPhoto:userPhoto {
     self = [super self];
-    if(self) {
+    if (self) {
         _name = name;
         _id = userId;
         _fbUserId = fbUserId;
@@ -35,7 +37,6 @@
 }
 
 - (id)initWithCoder:(NSCoder *)decoder {
-    
     NSString *userId = [decoder decodeObjectForKey:kUserId];
     NSString *name = [decoder decodeObjectForKey:kName];
     NSString *fbUserId = [decoder decodeObjectForKey:kFacebookId];
