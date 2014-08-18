@@ -28,8 +28,9 @@ typedef enum {
 } OBEffect;
 
 @interface OBNAudioManager : NSObject
-@property (nonatomic, strong) AEAudioController *audioController;
-@property (nonatomic, strong) AEAudioController *notificationController;
+@property (nonatomic, strong) AEAudioController *playbackController;
+@property (nonatomic, strong) AEAudioController *recordingController;
+
 @property (nonatomic, strong) AERecorder *audioRecorder;
 @property (nonatomic, strong) AEAudioFilePlayer *audioPlayer;
 +(instancetype)sharedInstance;

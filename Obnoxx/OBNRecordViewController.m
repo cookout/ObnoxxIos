@@ -45,7 +45,10 @@
 -(IBAction) play:(id) sender
 {
     OBNAudioManager *audioManager = [OBNAudioManager sharedInstance];
-    [audioManager play:self.recording.localUrl isRecording:NO filter:nil];
+    if(self.recording.localUrl)
+    {
+        [audioManager play:self.recording.localUrl isRecording:NO filter:nil];
+    }
 }
 
 -(IBAction) send:(id) sender
@@ -68,17 +71,26 @@
 
 -(IBAction) applyFilter1:(id)sender
 {
-    [[OBNAudioManager sharedInstance] addFilter:kCuji path:self.recording.localUrl];
+    if(self.recording.localUrl)
+    {
+        [[OBNAudioManager sharedInstance] addFilter:kCuji path:self.recording.localUrl];
+    }
 }
 
 -(IBAction) applyFilter2:(id)sender
 {
-    [[OBNAudioManager sharedInstance] addFilter:kKaraka path:self.recording.localUrl];
+    if(self.recording.localUrl)
+    {
+        [[OBNAudioManager sharedInstance] addFilter:kKaraka path:self.recording.localUrl];
+    }
 }
 
 -(IBAction) applyFilter3:(id)sender
 {
-    [[OBNAudioManager sharedInstance] addFilter:kPopHero path:self.recording.localUrl];
+    if(self.recording.localUrl)
+    {
+        [[OBNAudioManager sharedInstance] addFilter:kPopHero path:self.recording.localUrl];
+    }
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(NSObject *)response change:(NSString *)change context:(id) context
