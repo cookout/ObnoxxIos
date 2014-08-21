@@ -30,5 +30,6 @@
 - (void)registerToken;
 - (void)getSoundDelivery:(NSString *)deliveryId;
 - (void)getSounds;
-
+- (void)logPlayback:(NSString *) soundId delivery:(NSString *)deliveryId;
+-(void) heart: (NSString *) soundId hearted: (BOOL) hearted;
 @end

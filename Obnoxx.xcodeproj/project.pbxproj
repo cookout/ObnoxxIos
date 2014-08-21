@@ -36,6 +36,7 @@
 		200205951989BCBA00A8C732 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200205941989BCBA00A8C732 /* AudioToolbox.framework */; };
 		200205971989BCC200A8C732 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200205961989BCC200A8C732 /* Accelerate.framework */; };
 		200205A01989BE1F00A8C732 /* libTheAmazingAudioEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2002059D1989BE0700A8C732 /* libTheAmazingAudioEngine.a */; };
+		2012F10B19A598E200EFF7F3 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 2012F10A19A598E200EFF7F3 /* heart.png */; };
 		2075A07119A4393F001F019E /* OBNConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2075A06F19A4393F001F019E /* OBNConversationViewController.m */; };
 		2075A07219A4393F001F019E /* OBNConversationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2075A07019A4393F001F019E /* OBNConversationViewController.xib */; };
 		20949D16198A27FB00AA2AF3 /* OBNRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20949D14198A27FB00AA2AF3 /* OBNRecordViewController.m */; };
@@ -125,6 +126,7 @@
 		200205941989BCBA00A8C732 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		200205961989BCC200A8C732 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		200205981989BE0700A8C732 /* TheAmazingAudioEngine.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TheAmazingAudioEngine.xcodeproj; path = AmazingAudioEngine/TheAmazingAudioEngine.xcodeproj; sourceTree = "<group>"; };
+		2012F10A19A598E200EFF7F3 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
 		2075A06E19A4393F001F019E /* OBNConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBNConversationViewController.h; sourceTree = "<group>"; };
 		2075A06F19A4393F001F019E /* OBNConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBNConversationViewController.m; sourceTree = "<group>"; };
 		2075A07019A4393F001F019E /* OBNConversationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OBNConversationViewController.xib; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 		20020482198976AA00A8C732 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2012F10A19A598E200EFF7F3 /* heart.png */,
 				20C48F79199DFE7A008D17D5 /* proc.m4a */,
 				20020483198976AA00A8C732 /* Obnoxx-Info.plist */,
 				20020484198976AA00A8C732 /* InfoPlist.strings */,
@@ -429,6 +432,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2012F10B19A598E200EFF7F3 /* heart.png in Resources */,
 				20949D17198A27FB00AA2AF3 /* OBNRecordViewController.xib in Resources */,
 				20020486198976AA00A8C732 /* InfoPlist.strings in Resources */,
 				20949D1C198A293F00AA2AF3 /* OBNLoginViewController.xib in Resources */,

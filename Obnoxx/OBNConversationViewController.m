@@ -7,6 +7,7 @@
 //
 
 #import "OBNConversationViewController.h"
+#import "OBNServerCommunicator.h"
 
 
 @interface OBNConversationViewController ()
@@ -117,15 +118,34 @@
             break;
         }
     }
+    UIImage *img = [UIImage imageNamed:@"heart.png"];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0,0,100,110);
+    
+    [button setImage:img forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(checkButtonTapped:event:) forControlEvents:UIControlEventTouchUpInside];
     
     cell.textLabel.text =  message;
+    cell.accessoryView = button;
     return cell;
 }
 
+- (void)checkButtonTapped:(id)sender event:(id)event
+{
+    NSSet *touches = [event allTouches];
+    UITouch *touch = [touches anyObject];
+    CGPoint currentTouchPosition = [touch locationInView:self.conversation];
+    
+    NSIndexPath *indexPath = [self.conversation indexPathForRowAtPoint: currentTouchPosition];
+    
+    if (indexPath != nil){
+        [self tableView:self.conversation accessoryButtonTappedForRowWithIndexPath: indexPath];
+    }
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // User selected a sound, play it back
-    OBNState *appState = [OBNState sharedInstance];
+     OBNState *appState = [OBNState sharedInstance];
      NSDictionary *delivery = self.messages[indexPath.row];
      NSMutableArray *sounds = appState.sounds;
      
@@ -135,12 +155,18 @@
      for (int i = 0; i < sounds.count; i++) {
          NSString *s = [sounds[i] valueForKey:@"id"];
          if ([soundId isEqualToString:s]) {
-         NSLog(@"here");
-         soundURL = [sounds[i] valueForKey:@"soundFileUrl"];
-         break;
+             soundURL = [sounds[i] valueForKey:@"soundFileUrl"];
+             break;
          }
      }
      OBNAudioManager *audioManager = [OBNAudioManager sharedInstance];
+    
+     // Log playback
+     dispatch_async(dispatch_get_main_queue(), ^{
+         OBNServerCommunicator *server = [OBNServerCommunicator sharedInstance];
+         [server logPlayback:soundId delivery:[delivery valueForKey:@"id"]];
+     });
+    
      
      dispatch_async(dispatch_get_main_queue(), ^{
          NSURL *url = [NSURL URLWithString:soundURL];
@@ -157,6 +183,34 @@
          [audioManager play:filePath isRecording:NO filter:nil];
      });
 }
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"Hearting", indexPath);
+    OBNServerCommunicator *server = [OBNServerCommunicator sharedInstance];
+    
+    OBNState *appState = [OBNState sharedInstance];
+    NSDictionary *delivery = self.messages[indexPath.row];
+    NSMutableArray *sounds = appState.sounds;
+    
+    BOOL hearted;
+    NSString *soundId = [delivery valueForKey:@"soundId"];
+    
+    for (int i = 0; i < sounds.count; i++) {
+        NSString *s = [sounds[i] valueForKey:@"id"];
+        if ([soundId isEqualToString:s]) {
+            
+            NSString *value =[sounds[i] valueForKey:@"hearted"];
+            if([[sounds[i] valueForKey:@"hearted"] isEqualToString:@"false"])
+                hearted = false;
+            else hearted = true;
+            break;
+        }
+    }
+    hearted = !hearted;
+    [server heart:soundId hearted:hearted];
+}
+
 
 - (void)didReceiveMemoryWarning
 {

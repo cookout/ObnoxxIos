@@ -196,4 +196,81 @@
         }];
 }
 
+
+- (void)logPlayback:(NSString *) soundId delivery:(NSString *)deliveryId
+{
+    OBNState *appState = [OBNState sharedInstance];
+    NSDictionary *parameters = @{ @"sessionId" : appState.sessionId,
+                                  @"soundId":soundId,
+                                  @"soundDeliveryId":deliveryId};
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [[OBNJSONResponseSerializer alloc] init];
+    
+    [manager GET:@"http://obnoxx.co/logSoundPlay"
+      parameters:parameters
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             // Successfully logged a sound playback
+             // TODO: Something
+             NSLog(@"Playback logging success %@", responseObject);
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             // Playback logging failed
+             // TODO: Something
+             NSLog(@"Playback logging fail %@ %@", operation.responseObject, error);
+         }];
+}
+
+-(void) heart: (NSString *) soundId hearted: (BOOL) hearted
+{
+    OBNState *appState = [OBNState sharedInstance];
+    NSNumber *heart = [NSNumber numberWithBool:hearted];
+    NSDictionary *parameters;
+    
+    if(hearted)
+    {
+        parameters = @{ @"sessionId" : appState.sessionId,
+                                  @"soundId":soundId,
+                                  @"hearted":@"true"};
+    }
+    else
+    {
+        parameters = @{ @"sessionId" : appState.sessionId,
+                                      @"soundId":soundId,
+                                      @"hearted":@"false"};
+    }
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [[OBNJSONResponseSerializer alloc] init];
+    
+    [manager GET:@"http://obnoxx.co/setSoundHearted"
+      parameters:parameters
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             // Successfully logged a sound playback
+             // TODO: Something
+             NSLog(@"Hearting success %@", responseObject);
+             /*OBNState *appState = [OBNState sharedInstance];
+             for(int i=0;i<appState.sounds.count;i++)
+             {
+                 if([[appState.sounds[i] valueForKey:@"id"] isEqualToString:soundId])
+                 {
+                     [appState.sounds[i] setValue:heart forKey:@"hearted"];
+                     int numHearts = [appState.sounds[i] valueForKey:@"numHearts"];
+                     if(hearted)
+                         numHearts++;
+                     else numHearts--;
+                     [appState.sounds[i] setValue:[NSNumber numberWithInt:numHearts] forKey:@"numHearts"];
+                     break;
+                 }
+             }
+             [appState saveToDisk];*/
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             // Playback logging failed
+             // TODO: Something
+             NSLog(@"Hearting fail %@ %@", operation.responseObject, error);
+         }];
+}
+
+
 @end
