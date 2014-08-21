@@ -14,5 +14,9 @@
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSString *fbUserId;
 @property (nonatomic, retain) NSString *imageFilename;
-
+- (instancetype)initWithDictionary: (NSDictionary *) user;
+- (instancetype)initWithUserId:userId
+                          name:name
+                      fbUserId:fbUserId
+                     userPhoto:userPhoto;
 @end

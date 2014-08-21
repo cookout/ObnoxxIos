@@ -181,12 +181,18 @@
         success:^(AFHTTPRequestOperation *operation, id responseObject) {
             // Sucessfully sent sound to intended recipient, handle it here
             NSLog(@"Get all sounds succeeded %@", responseObject);
-            self.soundsResponse = responseObject;
+
+            // Populate the local data model with results
+            appState.deliveries = [responseObject valueForKey:@"soundDeliveries"];
+            appState.users = [responseObject valueForKey:@"users"];
+            appState.sounds = [responseObject valueForKey:@"sounds"];
+
+            [appState setupUniqueSenderList];
+            [appState saveToDisk];
         }
         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             // Sound send failed, handle it here
             NSLog(@"Get all sounds failed %@", operation);
-            self.soundsResponse = operation.responseObject;
         }];
 }
 

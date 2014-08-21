@@ -11,38 +11,32 @@
 #import "OBNAudioManager.h"
 #import "OBNState.h"
 #import "OBNAudioManager.h"
+#import "OBNConversationViewController.h"
 
 @implementation OBNMessageViewController
 
 - (void)loadMessages {
     OBNServerCommunicator *server = [OBNServerCommunicator sharedInstance];
-    [server addObserver:self
-             forKeyPath:@"soundsResponse"
+    OBNState *appState = [OBNState sharedInstance];
+    
+    [appState addObserver:self
+             forKeyPath:@"uniqueSortedSenderList"
                 options:NSKeyValueObservingOptionNew
                 context:nil];
     [server getSounds];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(NSObject *)serverCommunicator
+                      ofObject:(NSObject *)appState
                         change:(NSString *)change
                        context:(void *)context {
+
     // Check if request succeeded
-    NSDictionary *soundsResponse =
+    /*NSDictionary *soundsResponse =
             ((OBNServerCommunicator *)serverCommunicator).soundsResponse;
     OBNState *appState = [OBNState sharedInstance];
-    int success = ((NSString *)[soundsResponse valueForKey:@"success"]).intValue;
-        
-    if (success) {
-        // Populate the local data model with results
-        appState.deliveries = [soundsResponse valueForKey:@"soundDeliveries"];
-        appState.users = [soundsResponse valueForKey:@"users"];
-        appState.sounds = [soundsResponse valueForKey:@"sounds"];
-        [appState saveToDisk];
-        [self.tableView reloadData];
-    } else {
-        // Something was wrong at this step
-    }
+    int success = ((NSString *)[soundsResponse valueForKey:@"success"]).intValue;*/
+    [self.tableView reloadData];
 }
 
 - (void)viewDidLoad {
@@ -68,12 +62,13 @@
     return 1;
 }
 
+
 - (NSInteger)tableView:(UITableView *)tableView
          numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     OBNState *appState = [OBNState sharedInstance];
-    if (appState.deliveries) {
-        return [OBNState sharedInstance].deliveries.count;
+    if (appState.uniqueSortedSenderList) {
+        return [appState.uniqueSortedSenderList count];
     } else {
         return 0;
     }
@@ -84,9 +79,24 @@
     UITableViewCell *cell = [[UITableViewCell alloc] init];
     OBNState *appState = [OBNState sharedInstance];
     
-    NSDictionary *delivery = appState.deliveries[indexPath.row];
-    cell.textLabel.text = [delivery valueForKey:@"deliveryDateTime"];
+    NSString *userId = appState.uniqueSortedSenderList[indexPath.row];
+    NSString *userName;
     
+    for(int i=0;i<appState.users.count;i++)
+    {
+        if([[appState.users[i] valueForKey:@"id"] isEqualToString:userId])
+        {
+            userName = [appState.users[i] valueForKey:@"name"];
+            break;
+        }
+    }
+    
+    // The id is actually a phone number that this user sent a message
+    // to.
+    if(!userName)
+        userName = userId;
+    
+    cell.textLabel.text = userName;
     return cell;
 }
 
@@ -130,39 +140,14 @@
 
 - (void)tableView:(UITableView *)tableView
         didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // User selected a sound, play it back
+    
     OBNState *appState = [OBNState sharedInstance];
-    NSDictionary *delivery = appState.deliveries[indexPath.row];
-    NSMutableArray *sounds = appState.sounds;
-    
-    NSString *soundURL;
-    NSString *soundId = [delivery valueForKey:@"soundId"];
 
-    for (int i = 0; i < sounds.count; i++) {
-        NSString *s = [sounds[i] valueForKey:@"id"];
-        if ([soundId isEqualToString:s]) {
-            NSLog(@"here");
-            soundURL = [sounds[i] valueForKey:@"soundFileUrl"];
-            break;
-        }
-    }
-    OBNAudioManager *audioManager = [OBNAudioManager sharedInstance];
+    OBNConversationViewController *conversation = [[OBNConversationViewController alloc] init];
+    conversation.sender = appState.uniqueSortedSenderList[indexPath.row];
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSURL *url = [NSURL URLWithString:soundURL];
-        NSData *urlData = [NSData dataWithContentsOfURL:url];
-        NSString *filePath;
-        if (urlData) {
-            NSArray *paths = NSSearchPathForDirectoriesInDomains(
-                    NSDocumentDirectory, NSUserDomainMask, YES);
-            NSString  *documentsDirectory = [paths objectAtIndex:0];
-            
-            filePath = [NSString stringWithFormat:@"%@/%@",
-                    documentsDirectory,@"sound.m4a"];
-            [urlData writeToFile:filePath atomically:YES];
-        }
-        [audioManager play:filePath isRecording:NO filter:nil];
-    });
+    [self presentViewController:conversation animated:YES completion:nil];
+    
 }
 
 @end

@@ -42,12 +42,11 @@
 - (IBAction)send:(id)sender {
     OBNServerCommunicator *server = [OBNServerCommunicator sharedInstance];
 
+
     [server addObserver:self
              forKeyPath:@"uploadResponse"
                 options:NSKeyValueObservingOptionNew
                 context:nil];
-//    [server sendSound:self.recording.localUrl fileName:[self.recording.localUrl lastPathComponent]
-//       recipientPhone:self.receiver.text];
     
     NSRange fileName =
             [self.recording.localUrl rangeOfString:[self.recording.localUrl lastPathComponent]];

@@ -20,7 +20,10 @@
 @property (nonatomic, retain) NSMutableArray *sounds;
 @property (nonatomic, retain) NSMutableArray *users;
 
+@property (nonatomic, retain) NSMutableArray *uniqueSortedSenderList;
+
 + (instancetype)sharedInstance;
 - (BOOL)saveToDisk;
-
+- (void)setupUniqueSenderList;
+- (void) addUserToUniqueSenderList: (NSString *) user;
 @end

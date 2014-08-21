@@ -36,6 +36,8 @@
 		200205951989BCBA00A8C732 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200205941989BCBA00A8C732 /* AudioToolbox.framework */; };
 		200205971989BCC200A8C732 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200205961989BCC200A8C732 /* Accelerate.framework */; };
 		200205A01989BE1F00A8C732 /* libTheAmazingAudioEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2002059D1989BE0700A8C732 /* libTheAmazingAudioEngine.a */; };
+		2075A07119A4393F001F019E /* OBNConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2075A06F19A4393F001F019E /* OBNConversationViewController.m */; };
+		2075A07219A4393F001F019E /* OBNConversationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2075A07019A4393F001F019E /* OBNConversationViewController.xib */; };
 		20949D16198A27FB00AA2AF3 /* OBNRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20949D14198A27FB00AA2AF3 /* OBNRecordViewController.m */; };
 		20949D17198A27FB00AA2AF3 /* OBNRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20949D15198A27FB00AA2AF3 /* OBNRecordViewController.xib */; };
 		20949D1B198A293F00AA2AF3 /* OBNLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20949D19198A293F00AA2AF3 /* OBNLoginViewController.m */; };
@@ -123,6 +125,9 @@
 		200205941989BCBA00A8C732 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		200205961989BCC200A8C732 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		200205981989BE0700A8C732 /* TheAmazingAudioEngine.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TheAmazingAudioEngine.xcodeproj; path = AmazingAudioEngine/TheAmazingAudioEngine.xcodeproj; sourceTree = "<group>"; };
+		2075A06E19A4393F001F019E /* OBNConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBNConversationViewController.h; sourceTree = "<group>"; };
+		2075A06F19A4393F001F019E /* OBNConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBNConversationViewController.m; sourceTree = "<group>"; };
+		2075A07019A4393F001F019E /* OBNConversationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OBNConversationViewController.xib; sourceTree = "<group>"; };
 		20949D13198A27FB00AA2AF3 /* OBNRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBNRecordViewController.h; sourceTree = "<group>"; };
 		20949D14198A27FB00AA2AF3 /* OBNRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBNRecordViewController.m; sourceTree = "<group>"; };
 		20949D15198A27FB00AA2AF3 /* OBNRecordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OBNRecordViewController.xib; sourceTree = "<group>"; };
@@ -210,10 +215,6 @@
 		20020481198976AA00A8C732 /* Obnoxx */ = {
 			isa = PBXGroup;
 			children = (
-				FC440F9F19A2BD83003364AC /* OBNMessageViewController.h */,
-				FC440FA019A2BD83003364AC /* OBNMessageViewController.m */,
-				FC440FA119A2BD83003364AC /* OBNMessageViewController.xib */,
-				20C48F6A1991B07C008D17D5 /* OBNAudioManager.h */,
 				20C48F6B1991B07C008D17D5 /* OBNAudioManager.m */,
 				20C48F76199D5B4E008D17D5 /* OBNAutoTuneFilter.h */,
 				20C48F77199D5B4E008D17D5 /* OBNAutoTuneFilter.m */,
@@ -305,6 +306,13 @@
 		200205331989A59000A8C732 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FC440F9F19A2BD83003364AC /* OBNMessageViewController.h */,
+				FC440FA019A2BD83003364AC /* OBNMessageViewController.m */,
+				FC440FA119A2BD83003364AC /* OBNMessageViewController.xib */,
+				2075A06E19A4393F001F019E /* OBNConversationViewController.h */,
+				2075A06F19A4393F001F019E /* OBNConversationViewController.m */,
+				2075A07019A4393F001F019E /* OBNConversationViewController.xib */,
+				20C48F6A1991B07C008D17D5 /* OBNAudioManager.h */,
 				20949D18198A293F00AA2AF3 /* OBNLoginViewController.h */,
 				20949D19198A293F00AA2AF3 /* OBNLoginViewController.m */,
 				20949D1A198A293F00AA2AF3 /* OBNLoginViewController.xib */,
@@ -426,6 +434,7 @@
 				20949D1C198A293F00AA2AF3 /* OBNLoginViewController.xib in Resources */,
 				2002048E198976AA00A8C732 /* Images.xcassets in Resources */,
 				FC440FA319A2BD83003364AC /* OBNMessageViewController.xib in Resources */,
+				2075A07219A4393F001F019E /* OBNConversationViewController.xib in Resources */,
 				20949D26198B0ABD00AA2AF3 /* OBNSMSVerificationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,6 +469,7 @@
 				20949D29198B0E9400AA2AF3 /* OBNState.m in Sources */,
 				2002052E198995CC00A8C732 /* AFURLSessionManager.m in Sources */,
 				200205391989AFC700A8C732 /* OBNJSONResponseSerializer.m in Sources */,
+				2075A07119A4393F001F019E /* OBNConversationViewController.m in Sources */,
 				20949D1B198A293F00AA2AF3 /* OBNLoginViewController.m in Sources */,
 				20949D25198B0ABD00AA2AF3 /* OBNSMSVerificationViewController.m in Sources */,
 				200205361989A5B400A8C732 /* OBNUser.m in Sources */,

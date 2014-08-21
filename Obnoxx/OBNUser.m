@@ -29,6 +29,14 @@
     return self;
 }
 
+- (instancetype)initWithDictionary: (NSDictionary *) user
+{
+    return [self initWithUserId: [user valueForKey:@"id"]
+                     name:[user valueForKey:@"name"]
+                 fbUserId:nil
+                userPhoto:nil];
+}
+
 - (void) encodeWithCoder:(NSCoder *)encoder {
     [encoder encodeObject:_id forKey:kUserId];
     [encoder encodeObject:_name forKey:kName];

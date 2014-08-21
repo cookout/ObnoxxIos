@@ -46,6 +46,11 @@
         OBNHomeViewController *hvc = [[OBNHomeViewController alloc] init];
         OBNState *appState = [OBNState sharedInstance];
         appState.sessionId = [verifyResponse valueForKeyPath:@"sessionId"];
+        
+        // Setup the current user object
+        OBNUser *user = [[OBNUser alloc] initWithDictionary:[verifyResponse valueForKey:@"user"]];
+        appState.currentUser = user;
+
         dispatch_async(dispatch_get_main_queue(), ^{
             [appState saveToDisk];
         });

@@ -13,6 +13,9 @@
 
 @interface OBNServerCommunicator : NSObject
 
+// TODO (CRA): Change this to make observers watch the OBNState instead of
+// the server   communicator.
+
 @property (nonatomic, retain) NSDictionary *verifyResponse;
 @property (nonatomic, retain) NSDictionary *uploadResponse;
 @property (nonatomic, retain) NSDictionary *loginResponse;
