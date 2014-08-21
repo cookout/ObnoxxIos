@@ -43,6 +43,7 @@
     
     OBNState *appState = [OBNState sharedInstance];
     int i;
+    NSLog(@"Messages");
     
     // Populate conversation view with deliveries from this user
     for(i=0;i<appState.deliveries.count;i++)
@@ -50,22 +51,26 @@
         if([[appState.deliveries[i] valueForKey:@"userId"] isEqualToString:self.sender])
         {
             [self.messages addObject:appState.deliveries[i]];
+            NSLog(@"%@",appState.deliveries[i]);
             continue;
         }
         
         if([[appState.deliveries[i] valueForKey:@"recipientUserId"] isEqualToString:self.sender])
         {
             [self.messages addObject:appState.deliveries[i]];
+            NSLog(@"%@",appState.deliveries[i]);
             continue;
         }
 
         if([[appState.deliveries[i] valueForKey:@"phoneNumber"] isEqualToString:self.sender])
         {
             [self.messages addObject:appState.deliveries[i]];
+            NSLog(@"%@",appState.deliveries[i]);
             continue;
         }
 
     }
+
     [self.conversation reloadData];
     
 }
@@ -121,36 +126,35 @@
 {
     // User selected a sound, play it back
     OBNState *appState = [OBNState sharedInstance];
-     NSDictionary *delivery = appState.deliveries[indexPath.row];
+     NSDictionary *delivery = self.messages[indexPath.row];
      NSMutableArray *sounds = appState.sounds;
      
      NSString *soundURL;
      NSString *soundId = [delivery valueForKey:@"soundId"];
      
      for (int i = 0; i < sounds.count; i++) {
-     NSString *s = [sounds[i] valueForKey:@"id"];
-     if ([soundId isEqualToString:s]) {
-     NSLog(@"here");
-     soundURL = [sounds[i] valueForKey:@"soundFileUrl"];
-     break;
-     }
+         NSString *s = [sounds[i] valueForKey:@"id"];
+         if ([soundId isEqualToString:s]) {
+         NSLog(@"here");
+         soundURL = [sounds[i] valueForKey:@"soundFileUrl"];
+         break;
+         }
      }
      OBNAudioManager *audioManager = [OBNAudioManager sharedInstance];
      
      dispatch_async(dispatch_get_main_queue(), ^{
-     NSURL *url = [NSURL URLWithString:soundURL];
-     NSData *urlData = [NSData dataWithContentsOfURL:url];
-     NSString *filePath;
-     if (urlData) {
-     NSArray *paths = NSSearchPathForDirectoriesInDomains(
-     NSDocumentDirectory, NSUserDomainMask, YES);
-     NSString  *documentsDirectory = [paths objectAtIndex:0];
+         NSURL *url = [NSURL URLWithString:soundURL];
+         NSData *urlData = [NSData dataWithContentsOfURL:url];
+         NSString *filePath;
+         if (urlData) {
+             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+             NSString  *documentsDirectory = [paths objectAtIndex:0];
      
-     filePath = [NSString stringWithFormat:@"%@/%@",
-     documentsDirectory,@"sound.m4a"];
-     [urlData writeToFile:filePath atomically:YES];
-     }
-     [audioManager play:filePath isRecording:NO filter:nil];
+             filePath = [NSString stringWithFormat:@"%@/%@",
+                         documentsDirectory,@"sound.m4a"];
+             [urlData writeToFile:filePath atomically:YES];
+         }
+         [audioManager play:filePath isRecording:NO filter:nil];
      });
 }
 
